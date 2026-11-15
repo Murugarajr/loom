@@ -1,0 +1,119 @@
+@layer base.theme, base.preset, base.preferences;
+
+@layer base.preset {
+  .media-skin[data-theme="scaffold"] {
+    /* LOOM palette. Semantic tokens below point at these; see docs/DESIGN.md §3. */
+    --loom-ivory: #f4efe6;
+    --loom-ivory-hover: #e8e1d4;
+    --loom-ivory-press: #ddd4c4;
+    --loom-chip: #e3dacb;
+    --loom-graphite: #22201d;
+    --loom-graphite-2: #5b554d;
+    --loom-track: #857c6e;
+    --loom-strand: #2e2b27;
+    --loom-vermilion: #c4391a;
+    --loom-vermilion-pale: #e6b8a9;
+    --loom-disabled: #9b958c;
+    --loom-hairline: rgb(34 32 29 / 0.14);
+    --loom-font-serif: ui-serif, "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+    --loom-font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+    /* LOOM roles. */
+    --loom-plate: var(--loom-ivory);
+    --loom-plate-foreground: var(--loom-graphite);
+    --loom-plate-muted-foreground: var(--loom-graphite-2);
+    --loom-plate-edge: var(--loom-hairline);
+    --loom-plate-shadow: 0 0 0 1px var(--loom-plate-edge), 0 4px 16px rgb(0 0 0 / 0.18);
+    --loom-thread-track: var(--loom-track);
+    --loom-thread-strand: var(--loom-strand);
+    --loom-thread-played: var(--media-accent);
+    /* The light parting line between the played thread's two strands. */
+    --loom-thread-gap: var(--loom-vermilion-pale);
+    --loom-shuttle: var(--loom-graphite);
+
+    /* LOOM geometry. The thread's hit area is taller than its visible band; popups clear the plate. */
+    --loom-thread-hit: calc(var(--media-spacing) * 6);
+    --loom-thread-height: var(--media-spacing);
+    --loom-popup-offset: calc(var(--media-spacing) * 11);
+    /* Plate = padding (3 + 3) + gap (1) + button row (8) + thread hit area + 1px edge: 85px fine, 93px coarse. */
+    --loom-plate-height: calc(var(--media-spacing) * 15 + var(--loom-thread-hit) + 1px);
+
+    /* Every control sits on an opaque ivory plate, so control text and icons are graphite. */
+    --media-background: var(--loom-plate);
+    --media-foreground: var(--loom-plate-foreground);
+    --media-default-accent-color: var(--loom-vermilion);
+    --media-accent: var(--media-accent-color, var(--media-default-accent-color));
+    --media-accent-foreground: var(--media-accent-text-color, var(--loom-ivory));
+    --media-primary: var(--media-accent);
+    --media-primary-foreground: var(--media-accent-text-color, var(--loom-ivory));
+    --media-muted: var(--loom-chip);
+    --media-popover: var(--loom-plate);
+    --media-popover-boundary-offset: calc(var(--media-spacing) * 3);
+    --media-tooltip-boundary-offset: var(--media-popover-boundary-offset);
+    --media-popover-foreground: var(--loom-plate-foreground);
+    --media-ring: var(--media-accent);
+    --media-button-highlight: var(--loom-ivory-hover);
+    --media-video-border-radius: var(--media-border-radius, 0px);
+    --media-control-radius: 0px;
+    --media-controls-radius: 0px;
+    --media-menu-item-radius: 0px;
+    --media-popup-radius: 0px;
+    --media-dialog-radius: 0px;
+    --media-scrollbar-thumb-color: #808080;
+    --media-shadow-surface: none;
+    --media-shadow-surface-inset: none;
+    --media-shadow-thumb: none;
+    --media-backdrop-filter-surface: none;
+    --media-backdrop-filter-indicator: none;
+    --media-backdrop-filter-dialog: none;
+  }
+
+  @media (pointer: coarse) {
+    .media-skin[data-theme="scaffold"] {
+      --loom-thread-hit: calc(var(--media-spacing) * 8);
+      --loom-popup-offset: calc(var(--media-spacing) * 13);
+    }
+  }
+
+  .media-skin[data-theme="scaffold"][data-preset$="audio"] {
+    --media-foreground: black;
+    --media-muted: #e5e5e5;
+  }
+
+  @supports (color: light-dark(red, red)) {
+    .media-skin[data-theme="scaffold"][data-preset$="audio"] {
+      --media-foreground: light-dark(black, white);
+      --media-muted: light-dark(#e5e5e5, #404040);
+    }
+  }
+
+  @media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+    .media-skin[data-theme="scaffold"]:where([data-preset$="video"]) {
+      /* LOOM plates are already opaque; keep them ivory and give their edges full contrast. */
+      --media-background: var(--loom-plate);
+      --loom-plate-edge: var(--loom-graphite);
+    }
+  }
+
+  @media (forced-colors: active) {
+    .media-skin[data-theme="scaffold"] {
+      --media-background: Canvas;
+      --media-popover: Canvas;
+      --media-popover-foreground: CanvasText;
+      --media-foreground: CanvasText;
+      --media-accent: Highlight;
+      --media-primary: Highlight;
+      --media-primary-foreground: HighlightText;
+      --media-ring: Highlight;
+      --loom-plate: Canvas;
+      --loom-plate-foreground: CanvasText;
+      --loom-plate-muted-foreground: CanvasText;
+      --loom-plate-edge: CanvasText;
+      --loom-plate-shadow: 0 0 0 1px CanvasText;
+      --loom-thread-track: CanvasText;
+      --loom-thread-strand: CanvasText;
+      --loom-thread-played: Highlight;
+      --loom-shuttle: CanvasText;
+    }
+  }
+}
