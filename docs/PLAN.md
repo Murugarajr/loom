@@ -32,17 +32,33 @@ started from Scaffold. See `CLAUDE.md` for constraints.
   (`requestControlsLock()`); paired-thread timeline; thinner buffer; intentional disabled cast; quieter title.
 - Not yet tested: fullscreen, physical touch, RTL, real Windows High Contrast, screen-reader output.
 
-## M4 — Controls, motion, and icons
-- Style each control via `data-*` state; keep the Scaffold icon family unless a redraw is approved.
-- Motion via tokens; confirm reduced-motion collapse.
-- Any custom behaviour in TypeScript must use documented APIs (`PlayerController`).
+## M3.2 — Engineering verification pass (verified)
+- Record: `docs/DESIGN.md` §17. Evidence: `docs/review/m3-2/`.
+- Controls-keeper lifecycle: lock idempotency, microtask focus shift debouncing (no flicker), disconnect cleanup, and multi-instance isolation verified.
+- `:has()` fallback: centre group suppression strictly relies on `:has()`; in browsers lacking `:has()`, centre controls persist (inherited Scaffold fallback), resulting in a known fallback caption collision defect at 240 px and 340 px.
+- Aspect ratios: 16:9, 4:3, 21:9 verified across widths. At 340 px in 21:9 genuinely paused, centre play button is visible (340 px = 21.25rem ≥ 20rem) at 44×44 px with 12 px vertical clearance top and bottom; title is suppressed below 25rem.
+- Core playback regressions pass in tested Chrome environment.
+- No blocking defects found in tested Chrome scenarios. Manual fullscreen and physical-touch verification remain outstanding. Other browsers and platforms remain unverified unless explicitly listed.
 
-## M5 — Verification and polish
-- `typecheck` + `build`; workbench pass across width, aspect ratio, light/dark,
-  RTL, languages, autoplay/muted/loop.
-- Keyboard-only pass, focus visibility, contrast over video, error dialog,
-  announcer text; a manual screen-reader check (VoiceOver) recorded honestly.
-- Compare against `docs/DESIGN.md`; screenshots.
+## M4 — Public showcase and submission candidate (completed)
+- Restrained public showcase page at `/` (`apps/preview/index.html`).
+- Workbench preserved at `/workbench.html` with full frame communication and controls.
+- Raw preview preserved at `/preview.html`.
+- Reuses `createPlayer()` and skin bundle directly; zero skin duplication.
+- Showcase includes identity, prominent player, three design notes, verification/limitations disclosure, and credits.
+- Tested and verified in production preview (`dist/`); captures saved under `docs/review/m4/`.
+
+## M4.1 — Showcase finalisation and production verification (completed)
+- Resolved Mux playback ID discrepancy: confirmed `83EzHOvVzVN01AsrD01BCpiH02Pj3S8mfzBOu101w2nHC5s` is the actual and only media source across git history; earlier report of `x01bC...` was an assistant reporting error. Video, poster, title ("NASA Cosmic Dawn Trailer"), captions, and authored chapter cues all verified as belonging to this asset.
+- Selected sharper poster: updated preview/showcase player mounting helper to request 1920px asset via `&width=1920`.
+- Showcase-only initial controls hold: implemented `ShowcaseInitialHoldElement` using supported `requestControlsLock()` API. Reveals controls and timeline on initial arrival alongside poster and centre Play button, automatically releasing on media `playing` event while preserving focus-aware locks and normal idle auto-hide.
+- Simplified public-facing copy: replaced developer phrases with "Built with Video.js 10." and interaction hint "Play the film. Drag the thread."; updated 3 design notes (Woven progress, Shuttle playhead, Focus-aware controls); updated verification disclosures.
+- Complete production verification: verified direct loading of `/`, `/workbench.html`, `/preview.html`; playback advancement; seeking; caption cue display; chapter data integrity; workbench postMessage frame communication; keyboard focus retention; idle auto-hide; responsive layout (no overflow at 1440px and 375px); 0 console errors; 0 uncanceled network failures.
+- Captured refreshed review evidence in `docs/review/m4-1/`.
+
+## M5 — Final review and submission polish
+- Final review across all entry points.
+- Confirm media attribution and licensing before publication.
 
 ## M6 — Publish (only when asked)
 - `npm run deploy <host>`; challenge submission materials.

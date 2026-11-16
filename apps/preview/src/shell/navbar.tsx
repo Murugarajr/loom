@@ -33,6 +33,12 @@ export function Navbar({ previewUrl, optionsId }: NavbarProps) {
       </div>
 
       <div className="ml-auto flex items-center gap-1">
+        <a
+          href="./index.html"
+          className="text-muted-foreground hover:text-foreground text-xs font-medium px-2 py-1 rounded transition-colors mr-1"
+        >
+          Showcase
+        </a>
         <Button
           variant="ghost"
           size="icon-sm"

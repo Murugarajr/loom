@@ -1,0 +1,278 @@
+:root {
+  --showcase-bg: #11100e;
+  --showcase-surface: #1c1b18;
+  --showcase-surface-hover: #262420;
+  --showcase-text: #f4efe6;
+  --showcase-text-muted: #9c9486;
+  --showcase-accent: #e53e21;
+  --showcase-border: rgba(255, 255, 255, 0.12);
+  --showcase-font-serif: ui-serif, "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --showcase-font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --showcase-font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--showcase-bg);
+  color: var(--showcase-text);
+  font-family: var(--showcase-font-sans);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.showcase-container {
+  width: 100%;
+  max-width: 58rem;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+/* Header */
+.showcase-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--showcase-border);
+}
+
+.showcase-brand {
+  max-width: 42rem;
+}
+
+.showcase-title-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.showcase-title {
+  margin: 0;
+  font-family: var(--showcase-font-serif);
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--showcase-text);
+  line-height: 1.1;
+}
+
+.showcase-subtitle {
+  font-family: var(--showcase-font-serif);
+  font-style: italic;
+  font-size: 1.125rem;
+  color: var(--showcase-text-muted);
+}
+
+.showcase-desc {
+  margin: 0;
+  font-size: 1.0625rem;
+  color: var(--showcase-text-muted);
+  max-width: 38rem;
+}
+
+.showcase-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.5rem 0.875rem;
+  background-color: var(--showcase-surface);
+  color: var(--showcase-text);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1px solid var(--showcase-border);
+  border-radius: 8px;
+  white-space: nowrap;
+  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+
+.showcase-nav-link:hover {
+  background-color: var(--showcase-surface-hover);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+.showcase-nav-link:focus-visible {
+  outline: 2px solid var(--showcase-accent);
+  outline-offset: 2px;
+}
+
+/* Player section */
+.showcase-player-wrapper {
+  margin-bottom: 3rem;
+}
+
+.showcase-player-frame {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: #000;
+  border: 1px solid var(--showcase-border);
+  border-radius: 12px;
+  box-shadow: 0 24px 64px -12px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ensure player custom elements fill the frame */
+.showcase-player-frame media-i18n,
+.showcase-player-frame video-player,
+.showcase-player-frame live-video-player {
+  display: contents;
+}
+
+.showcase-player-frame .media-skin {
+  width: 100%;
+  height: 100%;
+}
+
+.showcase-player-caption {
+  margin-top: 0.75rem;
+  font-size: 0.8125rem;
+  color: var(--showcase-text-muted);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Design Notes */
+.showcase-section-title {
+  margin: 0 0 1.25rem 0;
+  font-family: var(--showcase-font-serif);
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: var(--showcase-text);
+  letter-spacing: -0.01em;
+}
+
+.showcase-notes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.showcase-note-card {
+  padding: 1.25rem;
+  background-color: var(--showcase-surface);
+  border: 1px solid var(--showcase-border);
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.showcase-note-title {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--showcase-text);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.showcase-note-title::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--showcase-accent);
+  box-shadow: 0 0 6px var(--showcase-accent);
+}
+
+.showcase-note-text {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--showcase-text-muted);
+  line-height: 1.45;
+}
+
+/* Verification and Limitations */
+.showcase-verification-card {
+  padding: 1.25rem;
+  background-color: var(--showcase-surface);
+  border: 1px solid var(--showcase-border);
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  margin-bottom: 3rem;
+}
+
+.showcase-verification-card h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--showcase-text);
+}
+
+.showcase-verification-card p {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.875rem;
+  color: var(--showcase-text-muted);
+  line-height: 1.45;
+}
+
+.showcase-verification-card p:last-child {
+  margin-bottom: 0;
+}
+
+/* Footer / Credits */
+.showcase-footer {
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--showcase-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.8125rem;
+  color: var(--showcase-text-muted);
+}
+
+.showcase-footer-meta {
+  margin: 0;
+}
+
+.showcase-footer-links {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.showcase-footer-links a {
+  color: var(--showcase-text);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.showcase-footer-links a:hover {
+  color: var(--showcase-accent);
+}
+
+/* Responsive adjustments */
+@media (max-width: 48rem) {
+  .showcase-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .showcase-nav-link {
+    align-self: flex-start;
+  }
+  .showcase-notes-grid {
+    grid-template-columns: 1fr;
+  }
+  .showcase-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

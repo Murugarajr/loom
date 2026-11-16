@@ -499,3 +499,22 @@ Evidence: `docs/review/m3-1/` (headed Chrome, 2× DPR; controls revealed with th
 Contrast (pairs from rendered pixels): played strand vs halo/plate 4.65; parting line vs strand 2.99 (decorative);
 shuttle vs halo 14.19; halo vs buffered strand 12.30, vs track 3.59; buffered strand vs track 3.42; disabled icon vs
 chip 2.59 (disabled, exempt); focus ring vs disabled chip 4.65. Colour checks only — not an accessibility audit.
+
+---
+
+## 17. M3.2 verification record
+
+Evidence: `docs/review/m3-2/` (headed Chrome 158, 2× DPR; real playback against Mux Cosmic Dawn stream; real caption track active; real Tab key focus events via CDP; parameters applied dynamically via workbench `workbench:params` protocol).
+
+| Area | Verification finding | Mechanism / Evidence |
+|---|---|---|
+| Controls-keeper lifecycle | Lock request is idempotent (`??= controls.requestControlsLock()`), single-lock token guarantee; repeated focus events do not leak locks (0 duplicate calls). Synchronous microtask queue debounces `focusout`→`focusin` transitions without lock flicker. Element disconnection cleans up observer, listeners, and releases active lock (`#unlock()`). Multi-player instances are isolated via scoped `media-container` queries and independent `playerContext` controllers | `src/video/controls-keeper.ts`; automated lifecycle test suite |
+| Keyboard focus persistence | Verified that keyboard focus (`:focus-visible` from real Tab key navigation) keeps controls locked and visible after 6.5s (idle auto-hide delay is ~2–3s). Focused button maintains vermilion outline and halo without triggering outer player focus ring | `docs/review/m3-2/focused-control-after-6s.png` |
+| `:has()` fallback defect / limitation | Known fallback defect / limitation: centre group suppression (`.video-controls-center:has(...)`) strictly relies on native `:has()` support. In browsers lacking `:has()`, the rules are discarded and centre controls remain visible during playback and below 20rem (inherited Scaffold fallback), causing a concrete collision defect with lifted captions at 240 px and 340 px. Verified in the tested Chrome environment; other browsers and platforms remain unverified unless explicitly listed | Simulated fallback evidence: `docs/review/m3-2/has-fallback-240-captions-controls.png`, `has-fallback-340-captions-controls.png` |
+| Real caption placement | Real caption cue ("This is a never before seen look.") verified on screen at 240px and 340px with controls visible. Captions clear the flush bottom plate via `--media-caption-track-y` (-21 spacing below 22.5rem) | `docs/review/m3-2/240-captions-controls-visible.png`, `docs/review/m3-2/340-captions-controls-visible.png` |
+| Aspect ratios (16:9, 4:3, 21:9) | Evaluated across 960px, 512px, 340px, and 240px. Title clear of centre controls (clearance ≥97px at 960px). At 340px in 21:9 (340×146px), title is suppressed (`width < 25rem` / 400px); when genuinely paused, the centre play button is visible, sized at 44×44px (`width < 22.5rem`), clearing the top by 12px and the 77px bottom plate by 12px without collision | `docs/review/m3-2/ratio-16x9-controls-visible.png`, `ratio-4x3-controls-visible.png`, `ratio-21x9-controls-visible.png`, `ratio-21x9-340px-paused.png` |
+| Menu containment | Settings menu at 340px measured 265×95px (within 340×191px player frame); values ("Auto (1080p)", "Default", "1×", "English (Generated)") render without truncation | `docs/review/m3-2/settings-menu-open-340.png` |
+| Core playback regressions | Play/pause, seeking (time slider pointer & thumb keyboard ArrowRight), volume/mute toggle, hotkeys (`m`, `c`), announcer `role="status"`, and idle auto-hide verified PASS | Automated browser test runner |
+
+No blocking defects found in tested Chrome scenarios. Manual fullscreen and physical-touch verification remain outstanding.
+

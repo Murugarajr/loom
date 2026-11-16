@@ -2,70 +2,82 @@
 
 @layer base.preset {
   .media-skin[data-theme="scaffold"] {
-    /* LOOM palette. Semantic tokens below point at these; see docs/DESIGN.md §3. */
+    /* LOOM Atelier Palette — Machined Titanium & Precision Hardware */
     --loom-ivory: #f4efe6;
-    --loom-ivory-hover: #e8e1d4;
-    --loom-ivory-press: #ddd4c4;
-    --loom-chip: #e3dacb;
-    --loom-graphite: #22201d;
-    --loom-graphite-2: #5b554d;
-    --loom-track: #857c6e;
-    --loom-strand: #2e2b27;
-    --loom-vermilion: #c4391a;
-    --loom-vermilion-pale: #e6b8a9;
-    --loom-disabled: #9b958c;
-    --loom-hairline: rgb(34 32 29 / 0.14);
+    --loom-ivory-hover: #ffffff;
+    --loom-ivory-press: #d9d2c5;
+    --loom-champagne: #e8dccb;
+    --loom-chip: rgba(255, 255, 255, 0.08);
+    --loom-graphite: #1a1917;
+    --loom-graphite-2: #8c857b;
+    --loom-track: #262420;
+    --loom-strand: #38342e;
+    --loom-vermilion: #e53e21;
+    --loom-vermilion-bright: #ff4d2d;
+    --loom-vermilion-pale: #ff856b;
+    --loom-amber-telemetry: #f0b454;
+    --loom-disabled: #666159;
+    --loom-hairline: rgba(255, 255, 255, 0.14);
     --loom-font-serif: ui-serif, "Iowan Old Style", "Palatino Linotype", Georgia, serif;
     --loom-font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --loom-font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 
-    /* LOOM roles. */
-    --loom-plate: var(--loom-ivory);
-    --loom-plate-foreground: var(--loom-graphite);
+    /* LOOM Atelier Chassis & Material Physics */
+    --loom-chassis-bg: linear-gradient(180deg, rgba(38, 36, 33, 0.94) 0%, rgba(22, 21, 19, 0.98) 100%);
+    --loom-chassis-solid: #1c1b18;
+    --loom-chassis-rim: rgba(255, 255, 255, 0.16);
+    --loom-chassis-shadow: 0 20px 48px -8px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.18), inset 0 -1px 0 rgba(0, 0, 0, 0.6);
+    --loom-puck-bg: radial-gradient(circle at 40% 35%, #38352f 0%, #1e1d1a 70%, #141311 100%);
+    --loom-puck-shadow: 0 12px 32px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.8), 0 0 0 4px rgba(255, 255, 255, 0.04);
+    --loom-puck-halo: 0 14px 40px rgba(0, 0, 0, 0.7), 0 0 24px rgba(240, 180, 84, 0.25);
+    --loom-thread-glow: 0 0 10px rgba(229, 62, 33, 0.7), 0 0 20px rgba(229, 62, 33, 0.35);
+
+    /* LOOM roles */
+    --loom-plate: var(--loom-chassis-bg);
+    --loom-plate-foreground: var(--loom-ivory);
     --loom-plate-muted-foreground: var(--loom-graphite-2);
-    --loom-plate-edge: var(--loom-hairline);
-    --loom-plate-shadow: 0 0 0 1px var(--loom-plate-edge), 0 4px 16px rgb(0 0 0 / 0.18);
+    --loom-plate-edge: var(--loom-chassis-rim);
+    --loom-plate-shadow: var(--loom-chassis-shadow);
     --loom-thread-track: var(--loom-track);
     --loom-thread-strand: var(--loom-strand);
-    --loom-thread-played: var(--media-accent);
-    /* The light parting line between the played thread's two strands. */
+    --loom-thread-played: var(--loom-vermilion);
     --loom-thread-gap: var(--loom-vermilion-pale);
-    --loom-shuttle: var(--loom-graphite);
+    --loom-shuttle: var(--loom-champagne);
 
-    /* LOOM geometry. The thread's hit area is taller than its visible band; popups clear the plate. */
+    /* LOOM geometry. */
     --loom-thread-hit: calc(var(--media-spacing) * 6);
-    --loom-thread-height: var(--media-spacing);
-    --loom-popup-offset: calc(var(--media-spacing) * 11);
-    /* Plate = padding (3 + 3) + gap (1) + button row (8) + thread hit area + 1px edge: 85px fine, 93px coarse. */
-    --loom-plate-height: calc(var(--media-spacing) * 15 + var(--loom-thread-hit) + 1px);
+    --loom-thread-height: calc(var(--media-spacing) * 1.5);
+    --loom-popup-offset: calc(var(--media-spacing) * 12);
+    --loom-plate-height: calc(var(--media-spacing) * 16 + var(--loom-thread-hit));
 
-    /* Every control sits on an opaque ivory plate, so control text and icons are graphite. */
-    --media-background: var(--loom-plate);
-    --media-foreground: var(--loom-plate-foreground);
+    /* Video.js semantic mapping */
+    --media-background: transparent;
+    --media-foreground: var(--loom-ivory);
     --media-default-accent-color: var(--loom-vermilion);
     --media-accent: var(--media-accent-color, var(--media-default-accent-color));
-    --media-accent-foreground: var(--media-accent-text-color, var(--loom-ivory));
+    --media-accent-foreground: var(--media-accent-text-color, #ffffff);
     --media-primary: var(--media-accent);
-    --media-primary-foreground: var(--media-accent-text-color, var(--loom-ivory));
+    --media-primary-foreground: var(--media-accent-text-color, #ffffff);
     --media-muted: var(--loom-chip);
-    --media-popover: var(--loom-plate);
+    --media-popover: var(--loom-chassis-solid);
     --media-popover-boundary-offset: calc(var(--media-spacing) * 3);
     --media-tooltip-boundary-offset: var(--media-popover-boundary-offset);
-    --media-popover-foreground: var(--loom-plate-foreground);
+    --media-popover-foreground: var(--loom-ivory);
     --media-ring: var(--media-accent);
-    --media-button-highlight: var(--loom-ivory-hover);
+    --media-button-highlight: rgba(255, 255, 255, 0.1);
     --media-video-border-radius: var(--media-border-radius, 0px);
-    --media-control-radius: 0px;
-    --media-controls-radius: 0px;
-    --media-menu-item-radius: 0px;
-    --media-popup-radius: 0px;
-    --media-dialog-radius: 0px;
-    --media-scrollbar-thumb-color: #808080;
-    --media-shadow-surface: none;
-    --media-shadow-surface-inset: none;
-    --media-shadow-thumb: none;
-    --media-backdrop-filter-surface: none;
-    --media-backdrop-filter-indicator: none;
-    --media-backdrop-filter-dialog: none;
+    --media-control-radius: 6px;
+    --media-controls-radius: 14px;
+    --media-menu-item-radius: 6px;
+    --media-popup-radius: 12px;
+    --media-dialog-radius: 14px;
+    --media-scrollbar-thumb-color: #555047;
+    --media-shadow-surface: var(--loom-chassis-shadow);
+    --media-shadow-surface-inset: inset 0 1px 0 rgba(255, 255, 255, 0.16);
+    --media-shadow-thumb: 0 2px 6px rgba(0, 0, 0, 0.6);
+    --media-backdrop-filter-surface: blur(24px) saturate(160%);
+    --media-backdrop-filter-indicator: blur(16px);
+    --media-backdrop-filter-dialog: blur(24px);
   }
 
   @media (pointer: coarse) {
@@ -89,9 +101,12 @@
 
   @media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
     .media-skin[data-theme="scaffold"]:where([data-preset$="video"]) {
-      /* LOOM plates are already opaque; keep them ivory and give their edges full contrast. */
-      --media-background: var(--loom-plate);
-      --loom-plate-edge: var(--loom-graphite);
+      --media-background: var(--loom-chassis-solid);
+      --loom-plate: var(--loom-chassis-solid);
+      --loom-plate-edge: var(--loom-ivory);
+      --media-backdrop-filter-surface: none;
+      --media-backdrop-filter-indicator: none;
+      --media-backdrop-filter-dialog: none;
     }
   }
 

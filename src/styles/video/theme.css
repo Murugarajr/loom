@@ -8,8 +8,8 @@
        taller, as it sits behind the control bar. */
     --media-controls-gradient-height: max(40%, calc(var(--media-spacing) * 40));
     --media-controls-bottom-gradient-height: max(50%, calc(var(--media-spacing) * 60));
-    --media-caption-controls-y: calc(var(--media-spacing) * -16);
-    --media-slider-preview-offset: calc(var(--media-spacing) * 9);
+    --media-caption-controls-y: calc(var(--media-spacing) * -22);
+    --media-slider-preview-offset: calc(var(--media-spacing) * 11);
   }
 
   /*

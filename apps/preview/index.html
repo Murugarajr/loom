@@ -3,10 +3,85 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>LOOM - Video.js</title>
+    <title>LOOM — Video.js Skin</title>
   </head>
-  <body class="text-foreground h-screen overflow-hidden font-sans">
-    <div id="root" class="h-full"></div>
-    <script type="module" src="/src/shell/main.tsx"></script>
+  <body>
+    <div class="showcase-container">
+      <header class="showcase-header">
+        <div class="showcase-brand">
+          <div class="showcase-title-row">
+            <h1 class="showcase-title">LOOM</h1>
+            <span class="showcase-subtitle">Atelier Precision Instrument</span>
+          </div>
+          <p class="showcase-desc">
+            An atelier-crafted Video.js 10 skin with an elevated floating titanium chassis, illuminated knurled thread, machined jewel shuttle, and focus-aware keyboard navigation.
+          </p>
+        </div>
+        <a href="./workbench.html" class="showcase-nav-link" title="Open interactive development workbench">
+          Workbench &rarr;
+        </a>
+      </header>
+
+      <main>
+        <section class="showcase-player-wrapper" aria-label="Working player demonstration">
+          <div id="player-mount" class="showcase-player-frame"></div>
+          <div class="showcase-player-caption">
+            <span>Built with Video.js 10.</span>
+            <span>Play the film. Drag the thread.</span>
+          </div>
+        </section>
+
+        <section aria-labelledby="design-notes-title">
+          <h2 id="design-notes-title" class="showcase-section-title">Design Notes</h2>
+          <div class="showcase-notes-grid">
+            <article class="showcase-note-card">
+              <h3 class="showcase-note-title">Illuminated thread</h3>
+              <p class="showcase-note-text">
+                A radiant vermilion fiber-optic core with knurled diagonal weave, ambient drop glow, and a quiet buffered strand.
+              </p>
+            </article>
+
+            <article class="showcase-note-card">
+              <h3 class="showcase-note-title">Machined jewel shuttle</h3>
+              <p class="showcase-note-text">
+                A milled brass/titanium coin with an illuminated center jewel dot, providing tactile haptic and sub-pixel hover response.
+              </p>
+            </article>
+
+            <article class="showcase-note-card">
+              <h3 class="showcase-note-title">Floating titanium chassis</h3>
+              <p class="showcase-note-text">
+                An elevated island with 24px backdrop blur, sub-pixel specular highlight, concentric milled puck controls, and focus-aware keyboard lock.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="showcase-verification-card" aria-labelledby="verification-title">
+          <h3 id="verification-title">Verification and known limitations</h3>
+          <p>
+            Verified in Chrome during development. Keyboard focus retention, responsive caption clearance across widths from 240 to 960 px, and menu containment have been verified in automated Chrome test suites.
+          </p>
+          <p>
+            <strong>Known fallback limitation:</strong> Centre-group suppression relies on CSS <code>:has()</code>. In environments lacking <code>:has()</code> support, centre controls remain visible and may collide with lifted captions at narrow widths (240 px and 340 px).
+          </p>
+          <p>
+            Fullscreen (including captions), physical touch, RTL languages, real Windows High Contrast, and screen-reader output remain explicitly unverified.
+          </p>
+        </section>
+      </main>
+
+      <footer class="showcase-footer">
+        <p class="showcase-footer-meta">
+          Demo video: NASA Cosmic Dawn Trailer, served via the Mux stream included with the Video.js scaffold. Built with Video.js 10.
+        </p>
+        <ul class="showcase-footer-links">
+          <li><a href="./workbench.html">Development Workbench</a></li>
+          <li><a href="./preview.html">Player Frame Preview</a></li>
+        </ul>
+      </footer>
+    </div>
+
+    <script type="module" src="/src/showcase/main.ts"></script>
   </body>
 </html>

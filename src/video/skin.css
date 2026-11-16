@@ -6,23 +6,26 @@
       cursor: pointer;
       background-color: var(--media-background);
       color: inherit;
-      border-radius: 0;
+      border-radius: var(--media-control-radius);
       outline-style: none;
       flex-shrink: 0;
       place-items: center;
       padding: 0;
       display: grid;
       position: relative;
+      transition: background-color 0.15s ease, transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), color 0.15s ease;
     }
 
     @media (hover: hover) {
       .media-button:hover {
         background-color: var(--media-button-highlight);
+        color: var(--loom-ivory-hover);
       }
     }
 
     .media-button:active {
-      background-color: var(--loom-ivory-press);
+      background-color: rgba(255, 255, 255, 0.15);
+      transform: scale(0.92);
     }
 
     .media-button:focus-visible {
@@ -31,8 +34,7 @@
       outline-width: 2px;
       outline-style: solid;
       outline-color: var(--media-ring);
-      /* The ring always sits on ivory, even when the button floats over the picture. */
-      box-shadow: 0 0 0 calc(var(--media-spacing) * 1) var(--loom-plate);
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.6);
     }
 
     /* Disabled controls keep their opaque plate and stay focusable; only the icon is muted (e.g. cast with no device). */
@@ -465,9 +467,11 @@
       width: calc(var(--media-spacing) * 14);
       height: calc(var(--media-spacing) * 14);
       padding: calc(var(--media-spacing) * 3.5);
-      background-color: var(--loom-plate);
-      color: var(--loom-plate-foreground);
-      box-shadow: var(--loom-plate-shadow);
+      background-color: var(--loom-chassis-solid);
+      border: 1.5px solid var(--loom-chassis-rim);
+      border-radius: 50%;
+      color: var(--loom-ivory);
+      box-shadow: var(--loom-puck-shadow);
     }
   }
 
@@ -551,16 +555,20 @@
     .media-tooltip-popup {
       pointer-events: none;
       z-index: 20;
-      background-color: var(--media-popover);
-      padding-inline: calc(var(--media-spacing) * 1.5);
-      padding-block: calc(var(--media-spacing) * 0.5);
+      background-color: var(--loom-chassis-solid);
+      border: 1px solid var(--loom-chassis-rim);
+      backdrop-filter: var(--media-backdrop-filter-indicator);
+      -webkit-backdrop-filter: var(--media-backdrop-filter-indicator);
+      padding-inline: calc(var(--media-spacing) * 2);
+      padding-block: calc(var(--media-spacing) * 1);
       white-space: nowrap;
-      color: var(--media-popover-foreground);
-      font-size: calc(var(--media-spacing) * 3);
+      color: var(--loom-ivory);
+      font-family: var(--loom-font-mono);
+      font-size: calc(var(--media-spacing) * 2.75);
       --media-popup-side-offset: var(--media-tooltip-side-offset);
       --media-tooltip-side-offset: var(--loom-popup-offset);
-      border-radius: 0;
-      box-shadow: var(--loom-plate-shadow);
+      border-radius: var(--media-control-radius);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.16);
     }
 
     .media-tooltip-popup[data-open] {
@@ -877,14 +885,17 @@
       max-width: var(--media-menu-available-width);
       min-width: calc(var(--media-spacing) * 44);
       overscroll-behavior: none;
-      background-color: var(--media-popover);
-      color: var(--media-popover-foreground);
+      background: var(--loom-chassis-solid) !important;
+      backdrop-filter: var(--media-backdrop-filter-surface);
+      -webkit-backdrop-filter: var(--media-backdrop-filter-surface);
+      border: 1px solid var(--loom-chassis-rim) !important;
+      color: var(--loom-ivory);
       --media-popover-side-offset: var(--loom-popup-offset);
       --media-popup-side-offset: var(--media-popover-side-offset);
-      border-radius: 0;
+      border-radius: var(--media-popup-radius) !important;
       margin: 0;
       padding: 0;
-      box-shadow: var(--loom-plate-shadow);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.16) !important;
       overflow: hidden !important;
     }
 
@@ -1039,11 +1050,10 @@
         calc(100% - var(--media-slider-chapter-end, 100%) + var(--media-spacing) * var(--media-chapter-inset-end, 0))
       );
       clip-path: inset(-1px 0);
-      /* The buffered range is a thin backing strand centred in the band, so it differs from unplayed by shape. */
-      inset-block: calc(50% - 0.5px);
       pointer-events: none;
       background-color: var(--loom-thread-strand);
-      border-radius: 0;
+      border-radius: 9999px;
+      opacity: 0.85;
       position: absolute;
     }
 
@@ -1077,9 +1087,12 @@
     .media-time-slider-chapter-title {
       text-overflow: ellipsis;
       white-space: nowrap;
-      opacity: 0.7;
+      opacity: 0.85;
       min-width: 0;
       overflow: hidden;
+      font-family: var(--loom-font-mono);
+      font-size: calc(var(--media-spacing) * 2.5);
+      letter-spacing: 0.04em;
     }
 
     .media-time-slider-chapter-title:empty {
@@ -1103,13 +1116,15 @@
       );
       clip-path: inset(-1px 0);
       pointer-events: none;
-      /* The played thread: two strands either side of a light parting line, tied across every 24px. Static. */
+      /* The Atelier played thread: luminous vermilion core with knurled diagonal weave and outer drop glow */
       background-color: var(--loom-thread-played);
-      background-image: linear-gradient(to right, var(--loom-thread-gap) 0 calc(100% - 1.5px), transparent 0);
-      background-size: calc(var(--media-spacing) * 6) 1px;
-      background-position: 0 50%;
-      background-repeat: repeat-x;
-      border-radius: 0;
+      background-image: repeating-linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.28) 0 2px,
+        transparent 2px 5px
+      );
+      box-shadow: var(--loom-thread-glow);
+      border-radius: 9999px 0 0 9999px;
       position: absolute;
     }
 
@@ -1184,52 +1199,52 @@
       display: flex;
     }
 
-    /* The thumb is the focusable role="slider" box; the shuttle is drawn on its pseudo-elements so clip-path never clips focus. */
+    /* The Atelier machined brass/titanium shuttle thumb */
     .media-time-slider-thumb {
       left: var(--media-slider-fill, 0%);
       width: calc(var(--media-spacing) * 4);
       height: calc(var(--media-spacing) * 4);
-      background-color: transparent;
-      border-radius: 0;
+      background: radial-gradient(circle at 35% 35%, #f4efe6 0%, #c8bfb0 60%, #756d60 100%);
+      border: 1.5px solid #141311;
+      border-radius: 50%;
       outline-style: none;
       position: absolute;
       transform: translateX(-50%);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 8px rgba(229, 62, 33, 0.6);
+      transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s ease;
     }
 
-    .media-time-slider-thumb::before,
     .media-time-slider-thumb::after {
       content: "";
-      pointer-events: none;
       position: absolute;
       top: 50%;
       left: 50%;
-      translate: -50% -50%;
-      clip-path: polygon(0 50%, 25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%);
+      transform: translate(-50%, -50%);
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background-color: #ff4d2d;
+      box-shadow: 0 0 4px #ff4d2d;
+      pointer-events: none;
     }
 
-    /* Ivory halo, so the shuttle reads the same over played, buffered and unplayed thread. */
     .media-time-slider-thumb::before {
-      width: calc(var(--media-spacing) * 4.5);
-      height: calc(var(--media-spacing) * 2.5);
-      background-color: var(--loom-plate);
-    }
-
-    .media-time-slider-thumb::after {
-      width: calc(var(--media-spacing) * 4);
-      height: calc(var(--media-spacing) * 2);
-      background-color: var(--loom-shuttle);
+      display: none;
     }
 
     @scope (.media-time-slider) {
-      &[data-dragging] .media-time-slider-thumb {
+      &[data-dragging] .media-time-slider-thumb,
+      &[data-pointing] .media-time-slider-thumb {
         left: var(--media-slider-pointer);
+        transform: translateX(-50%) scale(1.2);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.9), 0 0 12px rgba(255, 77, 45, 0.8);
       }
     }
 
     .media-time-slider-thumb:focus-visible {
-      outline-offset: 2px;
+      outline-offset: 3px;
       outline: 2px solid var(--media-ring);
-      box-shadow: 0 0 0 calc(var(--media-spacing) * 1) var(--loom-plate);
+      box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.6), 0 0 12px rgba(229, 62, 33, 0.8);
     }
 
     @media (forced-colors: active) {
@@ -1248,7 +1263,7 @@
     .media-time-slider-track {
       isolation: isolate;
       height: var(--loom-thread-height);
-      border-radius: 0;
+      border-radius: 9999px;
       position: absolute;
       inset-inline: 0;
       transition: scale var(--media-duration-slider) ease-out;
@@ -1257,7 +1272,7 @@
     /* The band thickens while the slider is pointed at, dragged or focused. */
     @scope (.media-time-slider) {
       &[data-interactive] .media-time-slider-track {
-        scale: 1 1.5;
+        scale: 1 1.4;
       }
     }
 
@@ -1268,8 +1283,10 @@
       clip-path: inset(-1px);
       content: "";
       pointer-events: none;
-      background-color: var(--loom-thread-track);
-      border-radius: 0;
+      background-color: #161513;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.8);
+      border-radius: 9999px;
       position: absolute;
     }
 
@@ -1407,15 +1424,18 @@
     .media-volume-popover-popup {
       z-index: 20;
       height: calc(var(--media-spacing) * 24);
-      width: calc(var(--media-spacing) * 7);
-      background-color: var(--media-popover);
-      padding-inline: calc(var(--media-spacing) * 3.5);
+      width: calc(var(--media-spacing) * 7.5);
+      background: var(--loom-chassis-solid) !important;
+      backdrop-filter: var(--media-backdrop-filter-surface);
+      -webkit-backdrop-filter: var(--media-backdrop-filter-surface);
+      border: 1px solid var(--loom-chassis-rim) !important;
+      padding-inline: calc(var(--media-spacing) * 3);
       padding-block: calc(var(--media-spacing) * 2.5);
-      color: var(--media-popover-foreground);
+      color: var(--loom-ivory);
       --media-popover-side-offset: var(--loom-popup-offset);
       --media-popup-side-offset: var(--media-popover-side-offset);
-      border-radius: 0;
-      box-shadow: var(--loom-plate-shadow);
+      border-radius: var(--media-popup-radius) !important;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.16) !important;
     }
 
     @media (forced-colors: active) {
@@ -1451,8 +1471,9 @@
 
     .media-volume-slider-fill {
       height: var(--media-slider-fill, 0%);
-      background-color: var(--media-accent);
-      border-radius: 0;
+      background-color: var(--loom-vermilion);
+      box-shadow: var(--loom-thread-glow);
+      border-radius: 9999px;
       width: 100%;
       position: absolute;
       bottom: 0;
@@ -1468,10 +1489,12 @@
 
     .media-volume-slider-thumb {
       bottom: var(--media-slider-fill, 0%);
-      width: calc(var(--media-spacing) * 3);
-      height: calc(var(--media-spacing) * 3);
-      background-color: var(--media-popover-foreground);
-      border-radius: 0;
+      width: calc(var(--media-spacing) * 3.5);
+      height: calc(var(--media-spacing) * 3.5);
+      background: radial-gradient(circle at 35% 35%, #f4efe6 0%, #c8bfb0 60%, #756d60 100%);
+      border: 1.5px solid #141311;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+      border-radius: 50%;
       position: absolute;
       left: 50%;
       transform: translate(-50%, 50%);
@@ -1492,9 +1515,10 @@
 
     .media-volume-slider-track {
       height: 100%;
-      width: var(--media-spacing);
-      background-color: var(--loom-thread-track);
-      border-radius: 0;
+      width: calc(var(--media-spacing) * 1.5);
+      background-color: #141311;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 9999px;
       position: absolute;
       bottom: 0;
       left: 50%;
@@ -1513,47 +1537,58 @@
   }
 
   @scope (.media-skin[data-theme="scaffold"][data-preset="video"]) {
-    /* LOOM's flush ivory plate. It overlays the picture, so the video never resizes when controls show or hide. */
+    /* LOOM Atelier floating titanium chassis. Elevated island hovering over the picture. */
     .video-controls-bottom {
       pointer-events: auto;
-      gap: var(--media-spacing);
-      background-color: var(--media-background);
-      border-top: 1px solid var(--loom-plate-edge);
-      padding: calc(var(--media-spacing) * 3);
-      padding-bottom: max(calc(var(--media-spacing) * 3), env(safe-area-inset-bottom));
-      inset-inline: 0;
+      gap: calc(var(--media-spacing) * 1.5);
+      background: var(--loom-chassis-bg);
+      backdrop-filter: var(--media-backdrop-filter-surface);
+      -webkit-backdrop-filter: var(--media-backdrop-filter-surface);
+      border: 1px solid var(--loom-chassis-rim);
+      box-shadow: var(--loom-chassis-shadow);
+      border-radius: var(--media-controls-radius);
+      padding: calc(var(--media-spacing) * 2.5) calc(var(--media-spacing) * 3.5);
+      padding-bottom: max(calc(var(--media-spacing) * 2.5), env(safe-area-inset-bottom));
+      position: absolute;
+      bottom: calc(var(--media-spacing) * 3);
+      inset-inline: calc(var(--media-spacing) * 3);
+      max-width: calc(var(--media-spacing) * 165);
+      margin-inline: auto;
       flex-direction: column;
       display: flex;
-      position: absolute;
-      bottom: 0;
+      transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     @scope (.video-controls-content) {
       &:not([data-visible]) .video-controls-bottom {
         pointer-events: none;
         opacity: 0;
+        transform: translateY(6px);
       }
     }
 
-    /* Narrow players: a tighter plate (77px instead of 85px at scale 1). captions.css lifts captions to match. */
+    /* Narrow players: a tighter floating island. */
     @container media-root (width < 22.5rem) {
       .video-controls-bottom {
+        bottom: calc(var(--media-spacing) * 1.5);
+        inset-inline: calc(var(--media-spacing) * 1.5);
         padding: calc(var(--media-spacing) * 2);
         padding-bottom: max(calc(var(--media-spacing) * 2), env(safe-area-inset-bottom));
+        border-radius: 10px;
       }
     }
 
     @media (forced-colors: active) {
       .video-controls-bottom {
-        background-color: canvas;
-        border-radius: 0;
+        background: canvas;
+        border: 1px solid canvastext;
       }
     }
 
     @media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
       .video-controls-bottom {
-        background-color: var(--media-background);
-        border-radius: 0;
+        background: var(--loom-chassis-solid);
+        border: 1px solid var(--loom-ivory);
       }
     }
 
@@ -1628,37 +1663,48 @@
     }
 
     .video-controls-center-button {
-      background-color: var(--loom-plate) !important;
-      box-shadow: var(--loom-plate-shadow);
+      background: var(--loom-puck-bg) !important;
+      border: 1.5px solid var(--loom-chassis-rim) !important;
+      box-shadow: var(--loom-puck-shadow) !important;
+      border-radius: 50% !important;
+      color: var(--loom-ivory) !important;
       margin: 0 !important;
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, color 0.15s ease !important;
     }
 
     @media (hover: hover) {
       .video-controls-center-button:hover {
-        background-color: var(--loom-ivory-hover) !important;
+        transform: scale(1.08) !important;
+        box-shadow: var(--loom-puck-halo) !important;
+        border-color: rgba(240, 180, 84, 0.5) !important;
+        color: #ffffff !important;
       }
     }
 
     .video-controls-center-button:active {
-      background-color: var(--loom-ivory-press) !important;
+      transform: scale(0.93) !important;
     }
 
     .video-controls-center-button:focus-visible {
-      background-color: var(--loom-plate) !important;
+      outline: 2px solid var(--media-ring) !important;
+      outline-offset: 4px !important;
+      box-shadow: var(--loom-puck-halo) !important;
     }
 
     .video-controls-center-button[aria-expanded="true"] {
-      background-color: var(--loom-ivory-hover) !important;
+      border-color: var(--media-ring) !important;
     }
 
     @media (forced-colors: active) {
       .video-controls-center-button {
         background-color: buttonface !important;
+        border: 2px solid buttontext !important;
       }
 
       @media (hover: hover) {
         .video-controls-center-button:hover {
           background-color: highlight !important;
+          color: highlighttext !important;
         }
       }
 
@@ -1670,47 +1716,51 @@
 
     @media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
       .video-controls-center-button {
-        background-color: var(--media-background) !important;
+        background: var(--loom-chassis-solid) !important;
+        border: 2px solid var(--loom-ivory) !important;
       }
 
       @media (hover: hover) {
         .video-controls-center-button:hover {
-          background-color: var(--media-foreground) !important;
+          background-color: var(--loom-ivory) !important;
+          color: var(--loom-graphite) !important;
         }
       }
 
       .video-controls-center-button:focus-visible,
       .video-controls-center-button[aria-expanded="true"] {
-        background-color: var(--media-foreground) !important;
+        background-color: var(--loom-ivory) !important;
+        color: var(--loom-graphite) !important;
       }
     }
 
     .video-controls-center-play {
-      width: calc(var(--media-spacing) * 14.5) !important;
-      height: calc(var(--media-spacing) * 14.5) !important;
+      width: calc(var(--media-spacing) * 16) !important;
+      height: calc(var(--media-spacing) * 16) !important;
     }
 
     @container media-root (width < 22.5rem) {
       .video-controls-center-play {
-        width: calc(var(--media-spacing) * 11) !important;
-        height: calc(var(--media-spacing) * 11) !important;
+        width: calc(var(--media-spacing) * 12) !important;
+        height: calc(var(--media-spacing) * 12) !important;
       }
     }
 
     .video-controls-center-play-icon {
-      width: calc(var(--media-spacing) * 7) !important;
-      height: calc(var(--media-spacing) * 7) !important;
+      width: calc(var(--media-spacing) * 7.5) !important;
+      height: calc(var(--media-spacing) * 7.5) !important;
+      margin-inline-start: 2px;
     }
 
     @container media-root (width >= 22.5rem) {
       .video-controls-center-play[data-started] {
-        width: calc(var(--media-spacing) * 12) !important;
-        height: calc(var(--media-spacing) * 12) !important;
+        width: calc(var(--media-spacing) * 14) !important;
+        height: calc(var(--media-spacing) * 14) !important;
       }
 
       .video-controls-center-play[data-started] .video-controls-center-play-icon {
-        width: calc(var(--media-spacing) * 6) !important;
-        height: calc(var(--media-spacing) * 6) !important;
+        width: calc(var(--media-spacing) * 6.5) !important;
+        height: calc(var(--media-spacing) * 6.5) !important;
       }
     }
 
@@ -1777,7 +1827,13 @@
     }
 
     .video-controls-top > .media-button {
-      box-shadow: var(--loom-plate-shadow);
+      background: var(--loom-chassis-bg) !important;
+      backdrop-filter: var(--media-backdrop-filter-indicator);
+      -webkit-backdrop-filter: var(--media-backdrop-filter-indicator);
+      border: 1px solid var(--loom-chassis-rim) !important;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.16) !important;
+      border-radius: var(--media-control-radius) !important;
+      color: var(--loom-ivory) !important;
     }
 
     @scope (.video-controls-content) {
@@ -1857,10 +1913,13 @@
     .media-time-group {
       height: calc(var(--media-spacing) * 8);
       align-items: center;
-      gap: var(--media-spacing);
-      padding-inline: var(--media-spacing);
+      gap: calc(var(--media-spacing) * 0.75);
+      padding-inline: calc(var(--media-spacing) * 1.5);
+      font-family: var(--loom-font-mono);
+      font-size: calc(var(--media-spacing) * 2.75);
       font-variant-numeric: tabular-nums;
       font-weight: 500;
+      letter-spacing: -0.02em;
       flex-shrink: 0;
       line-height: 1;
       display: flex;
@@ -2008,17 +2067,37 @@
       pointer-events: none;
       text-overflow: ellipsis;
       white-space: nowrap;
-      background-color: var(--media-background);
-      box-shadow: var(--loom-plate-shadow);
+      background: var(--loom-chassis-bg);
+      backdrop-filter: var(--media-backdrop-filter-indicator);
+      -webkit-backdrop-filter: var(--media-backdrop-filter-indicator);
+      border: 1px solid var(--loom-chassis-rim);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+      border-radius: var(--media-control-radius);
       min-width: 0;
       padding-inline: calc(var(--media-spacing) * 2.5);
-      font-family: var(--loom-font-serif);
-      font-size: calc(var(--media-spacing) * 3.5);
+      font-family: var(--loom-font-mono);
+      font-size: calc(var(--media-spacing) * 2.75);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
       line-height: calc(var(--media-spacing) * 7);
-      color: var(--media-foreground);
+      color: var(--loom-ivory);
       flex: 0 1 auto;
       margin-inline-end: auto;
       overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      gap: calc(var(--media-spacing) * 1.5);
+    }
+
+    .media-title::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--loom-vermilion);
+      box-shadow: 0 0 6px var(--loom-vermilion);
+      flex-shrink: 0;
     }
 
     .media-title:not([data-visible]) {
@@ -2030,12 +2109,14 @@
         z-index: 40;
         color: canvastext;
         background-color: #0000 !important;
+        border: 1px solid canvastext;
       }
     }
 
     @media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
       .media-title {
-        background-color: var(--media-background);
+        background-color: var(--loom-chassis-solid);
+        border: 1px solid var(--loom-ivory);
       }
     }
 
@@ -2051,11 +2132,14 @@
   }
 
   @scope (.media-skin[data-theme="scaffold"][data-preset="video"]) {
-    /* No scrim: every LOOM control has an opaque ivory backing, so the picture is left undimmed. */
+    /* Atmospheric cinematic scrim: smooth top and bottom gradients enhance readability while preserving the footage. */
     .video-controls-backdrop {
       pointer-events: none;
       position: absolute;
       inset: 0;
+      background: linear-gradient(to top, rgba(10, 9, 8, 0.82) 0%, rgba(10, 9, 8, 0.45) 25%, rgba(10, 9, 8, 0.1) 50%, transparent 80%),
+                  linear-gradient(to bottom, rgba(10, 9, 8, 0.6) 0%, rgba(10, 9, 8, 0.15) 20%, transparent 40%);
+      transition: opacity 0.3s ease;
     }
 
     .video-controls-backdrop:not([data-started]) {
@@ -2100,8 +2184,13 @@
 
     .video-controls-center-seek {
       display: none;
-      width: calc(var(--media-spacing) * 8) !important;
-      height: calc(var(--media-spacing) * 8) !important;
+      width: calc(var(--media-spacing) * 10) !important;
+      height: calc(var(--media-spacing) * 10) !important;
+      border-radius: 50% !important;
+      font-family: var(--loom-font-mono) !important;
+      font-size: calc(var(--media-spacing) * 2.5) !important;
+      font-weight: 700 !important;
+      letter-spacing: -0.05em;
     }
 
     @scope (.video-controls-content) {
