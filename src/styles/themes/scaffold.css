@@ -2,80 +2,98 @@
 
 @layer base.preset {
   .media-skin[data-theme="scaffold"] {
-    /* LOOM Atelier Palette — Machined Titanium & Precision Hardware */
-    --loom-ivory: #f4efe6;
-    --loom-ivory-hover: #ffffff;
-    --loom-ivory-press: #d9d2c5;
-    --loom-champagne: #e8dccb;
-    --loom-chip: rgba(255, 255, 255, 0.08);
-    --loom-graphite: #1a1917;
-    --loom-graphite-2: #8c857b;
-    --loom-track: #262420;
-    --loom-strand: #38342e;
-    --loom-vermilion: #e53e21;
-    --loom-vermilion-bright: #ff4d2d;
-    --loom-vermilion-pale: #ff856b;
-    --loom-amber-telemetry: #f0b454;
-    --loom-disabled: #666159;
-    --loom-hairline: rgba(255, 255, 255, 0.14);
-    --loom-font-serif: ui-serif, "Iowan Old Style", "Palatino Linotype", Georgia, serif;
-    --loom-font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    --loom-font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    /* PowerDVD Hi-Fi CyberDeck Palette — Skeuomorphic Chrome, Brushed Platinum & Backlit LCD */
+    --cyber-platinum: #e4e8ef;
+    --cyber-chrome-highlight: #ffffff;
+    --cyber-chrome-dark: #637082;
+    --cyber-text-dark: #12161b;
+    --cyber-text-muted: #4e5a6a;
+    --cyber-cyan: #00f0ff;
+    --cyber-cyan-bright: #33f5ff;
+    --cyber-cyan-dim: #0088aa;
+    --cyber-amber: #ffaa00;
+    --cyber-vermilion: #e53e21;
+    --cyber-font-lcd: ui-monospace, "Share Tech Mono", "Cascadia Code", "SF Mono", Menlo, monospace;
+    --cyber-font-tech: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
-    /* LOOM Atelier Chassis & Material Physics */
-    --loom-chassis-bg: linear-gradient(180deg, rgba(38, 36, 33, 0.94) 0%, rgba(22, 21, 19, 0.98) 100%);
-    --loom-chassis-solid: #1c1b18;
-    --loom-chassis-rim: rgba(255, 255, 255, 0.16);
-    --loom-chassis-shadow: 0 20px 48px -8px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.18), inset 0 -1px 0 rgba(0, 0, 0, 0.6);
-    --loom-puck-bg: radial-gradient(circle at 40% 35%, #38352f 0%, #1e1d1a 70%, #141311 100%);
-    --loom-puck-shadow: 0 12px 32px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.8), 0 0 0 4px rgba(255, 255, 255, 0.04);
-    --loom-puck-halo: 0 14px 40px rgba(0, 0, 0, 0.7), 0 0 24px rgba(240, 180, 84, 0.25);
-    --loom-thread-glow: 0 0 10px rgba(229, 62, 33, 0.7), 0 0 20px rgba(229, 62, 33, 0.35);
+    /* PowerDVD Hardware Deck Materials */
+    --cyber-deck-bg: linear-gradient(180deg, #dce2eb 0%, #b4becc 26%, #8b97a7 50%, #c0c8d4 84%, #f2f5f9 100%);
+    --cyber-deck-solid: #b0bac8;
+    --cyber-deck-rim: #566373;
+    --cyber-deck-shadow: 0 24px 60px -8px rgba(0, 0, 0, 0.85), inset 0 2px 2px rgba(255, 255, 255, 0.95), inset 0 -2px 3px rgba(0, 0, 0, 0.6);
+    --cyber-lcd-bg: linear-gradient(180deg, #071924 0%, #020d14 100%);
+    --cyber-lcd-border: 1.5px solid #143545;
+    --cyber-lcd-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.95), 0 0 12px rgba(0, 240, 255, 0.25);
+    --cyber-cyan-glow: 0 0 8px rgba(0, 240, 255, 0.85), 0 0 18px rgba(0, 240, 255, 0.45);
+    --cyber-jog-dial: radial-gradient(circle at 40% 35%, #ffffff 0%, #cbd3dc 40%, #7e8a99 85%, #5a6573 100%);
+    --cyber-jog-shadow: 0 10px 28px rgba(0, 0, 0, 0.75), inset 0 2px 3px #ffffff, 0 0 16px rgba(0, 240, 255, 0.5);
+    --cyber-btn-bg: linear-gradient(180deg, #f0f3f7 0%, #c8cfd9 50%, #9aa5b4 100%);
+    --cyber-btn-border: 1px solid #758292;
+    --cyber-btn-shadow: 0 2px 5px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.95);
+    --cyber-btn-hover: linear-gradient(180deg, #ffffff 0%, #d8e0eb 50%, #b0bccb 100%);
+    --cyber-btn-active: linear-gradient(180deg, #7c8898 0%, #a2aec0 50%, #c0cbda 100%);
 
-    /* LOOM roles */
-    --loom-plate: var(--loom-chassis-bg);
-    --loom-plate-foreground: var(--loom-ivory);
-    --loom-plate-muted-foreground: var(--loom-graphite-2);
-    --loom-plate-edge: var(--loom-chassis-rim);
-    --loom-plate-shadow: var(--loom-chassis-shadow);
-    --loom-thread-track: var(--loom-track);
-    --loom-thread-strand: var(--loom-strand);
-    --loom-thread-played: var(--loom-vermilion);
-    --loom-thread-gap: var(--loom-vermilion-pale);
-    --loom-shuttle: var(--loom-champagne);
+    /* LOOM roles mapped to PowerDVD Hi-Fi CyberDeck */
+    --loom-plate: var(--cyber-deck-bg);
+    --loom-plate-foreground: var(--cyber-text-dark);
+    --loom-plate-muted-foreground: var(--cyber-text-muted);
+    --loom-plate-edge: var(--cyber-deck-rim);
+    --loom-plate-shadow: var(--cyber-deck-shadow);
+    --loom-chassis-bg: var(--cyber-deck-bg);
+    --loom-chassis-rim: var(--cyber-deck-rim);
+    --loom-chassis-shadow: var(--cyber-deck-shadow);
+    --loom-chassis-solid: var(--cyber-deck-solid);
+    --loom-puck-bg: var(--cyber-jog-dial);
+    --loom-puck-halo: 0 0 20px rgba(0, 240, 255, 0.65), 0 0 40px rgba(0, 240, 255, 0.3);
+    --loom-puck-shadow: var(--cyber-jog-shadow);
+    --loom-chip: var(--cyber-btn-bg);
+    --loom-disabled: rgba(18, 22, 27, 0.35);
+    --loom-font-mono: var(--cyber-font-lcd);
+    --loom-font-sans: var(--cyber-font-tech);
+    --loom-font-serif: var(--cyber-font-tech);
+    --loom-graphite: #0c141d;
+    --loom-ivory: #ffffff;
+    --loom-ivory-hover: var(--cyber-cyan-bright);
+    --loom-thread-track: #090e13;
+    --loom-thread-strand: #1a3c4f;
+    --loom-thread-played: var(--cyber-cyan);
+    --loom-thread-glow: var(--cyber-cyan-glow);
+    --loom-thread-gap: #0088cc;
+    --loom-shuttle: var(--cyber-chrome-highlight);
+    --loom-vermilion: var(--cyber-vermilion);
 
-    /* LOOM geometry. */
+    /* LOOM geometry */
     --loom-thread-hit: calc(var(--media-spacing) * 6);
     --loom-thread-height: calc(var(--media-spacing) * 1.5);
     --loom-popup-offset: calc(var(--media-spacing) * 12);
-    --loom-plate-height: calc(var(--media-spacing) * 16 + var(--loom-thread-hit));
+    --loom-plate-height: calc(var(--media-spacing) * 17 + var(--loom-thread-hit));
 
     /* Video.js semantic mapping */
     --media-background: transparent;
-    --media-foreground: var(--loom-ivory);
-    --media-default-accent-color: var(--loom-vermilion);
+    --media-foreground: var(--cyber-text-dark);
+    --media-default-accent-color: var(--cyber-cyan);
     --media-accent: var(--media-accent-color, var(--media-default-accent-color));
-    --media-accent-foreground: var(--media-accent-text-color, #ffffff);
+    --media-accent-foreground: #000000;
     --media-primary: var(--media-accent);
-    --media-primary-foreground: var(--media-accent-text-color, #ffffff);
-    --media-muted: var(--loom-chip);
-    --media-popover: var(--loom-chassis-solid);
+    --media-primary-foreground: #000000;
+    --media-muted: rgba(0, 0, 0, 0.08);
+    --media-popover: var(--cyber-lcd-bg);
     --media-popover-boundary-offset: calc(var(--media-spacing) * 3);
     --media-tooltip-boundary-offset: var(--media-popover-boundary-offset);
-    --media-popover-foreground: var(--loom-ivory);
-    --media-ring: var(--media-accent);
-    --media-button-highlight: rgba(255, 255, 255, 0.1);
+    --media-popover-foreground: var(--cyber-cyan);
+    --media-ring: var(--cyber-cyan);
+    --media-button-highlight: rgba(255, 255, 255, 0.3);
     --media-video-border-radius: var(--media-border-radius, 0px);
     --media-control-radius: 6px;
-    --media-controls-radius: 14px;
+    --media-controls-radius: 12px;
     --media-menu-item-radius: 6px;
-    --media-popup-radius: 12px;
+    --media-popup-radius: 10px;
     --media-dialog-radius: 14px;
-    --media-scrollbar-thumb-color: #555047;
-    --media-shadow-surface: var(--loom-chassis-shadow);
-    --media-shadow-surface-inset: inset 0 1px 0 rgba(255, 255, 255, 0.16);
+    --media-scrollbar-thumb-color: var(--cyber-chrome-dark);
+    --media-shadow-surface: var(--cyber-deck-shadow);
+    --media-shadow-surface-inset: inset 0 1px 1px rgba(255, 255, 255, 0.9);
     --media-shadow-thumb: 0 2px 6px rgba(0, 0, 0, 0.6);
-    --media-backdrop-filter-surface: blur(24px) saturate(160%);
+    --media-backdrop-filter-surface: blur(20px) saturate(160%);
     --media-backdrop-filter-indicator: blur(16px);
     --media-backdrop-filter-dialog: blur(24px);
   }

@@ -1,10 +1,10 @@
 :root {
-  --showcase-bg: #11100e;
-  --showcase-surface: #1c1b18;
-  --showcase-surface-hover: #262420;
-  --showcase-text: #f4efe6;
-  --showcase-text-muted: #9c9486;
-  --showcase-accent: #e53e21;
+  --showcase-bg: #0a0d12;
+  --showcase-surface: #121822;
+  --showcase-surface-hover: #192230;
+  --showcase-text: #e6ecf4;
+  --showcase-text-muted: #8391a3;
+  --showcase-accent: #00f0ff;
   --showcase-border: rgba(255, 255, 255, 0.12);
   --showcase-font-serif: ui-serif, "Iowan Old Style", "Palatino Linotype", Georgia, serif;
   --showcase-font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -257,6 +257,48 @@ body {
 
 .showcase-footer-links a:hover {
   color: var(--showcase-accent);
+}
+
+/* Keyboard Shortcuts Section */
+.showcase-shortcuts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.showcase-shortcut-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.625rem 0.875rem;
+  background-color: var(--showcase-surface);
+  border: 1px solid var(--showcase-border);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  color: var(--showcase-text);
+}
+
+.showcase-kbd-group {
+  display: inline-flex;
+  gap: 0.35rem;
+  align-items: center;
+}
+
+.showcase-kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.75rem;
+  padding: 0.2rem 0.45rem;
+  font-family: var(--showcase-font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #00f0ff;
+  background: linear-gradient(180deg, #101c26 0%, #060e14 100%);
+  border: 1px solid #143545;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(0, 240, 255, 0.2);
 }
 
 /* Responsive adjustments */

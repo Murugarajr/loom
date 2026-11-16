@@ -33,8 +33,8 @@
       outline-offset: 2px;
       outline-width: 2px;
       outline-style: solid;
-      outline-color: var(--media-ring);
-      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.6);
+      outline-color: var(--cyber-cyan);
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.85);
     }
 
     /* Disabled controls keep their opaque plate and stay focusable; only the icon is muted (e.g. cast with no device). */
@@ -88,7 +88,9 @@
       .media-button:before {
         content: "";
         position: absolute;
-        inset: -3px;
+        inset: -6px;
+        min-width: 44px;
+        min-height: 44px;
       }
     }
 
@@ -885,17 +887,17 @@
       max-width: var(--media-menu-available-width);
       min-width: calc(var(--media-spacing) * 44);
       overscroll-behavior: none;
-      background: var(--loom-chassis-solid) !important;
+      background: var(--cyber-lcd-bg) !important;
       backdrop-filter: var(--media-backdrop-filter-surface);
       -webkit-backdrop-filter: var(--media-backdrop-filter-surface);
-      border: 1px solid var(--loom-chassis-rim) !important;
-      color: var(--loom-ivory);
+      border: 1.5px solid #143545 !important;
+      color: var(--cyber-platinum);
       --media-popover-side-offset: var(--loom-popup-offset);
       --media-popup-side-offset: var(--media-popover-side-offset);
       border-radius: var(--media-popup-radius) !important;
       margin: 0;
       padding: 0;
-      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.16) !important;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.9), 0 0 16px rgba(0, 240, 255, 0.25) !important;
       overflow: hidden !important;
     }
 
@@ -1116,14 +1118,10 @@
       );
       clip-path: inset(-1px 0);
       pointer-events: none;
-      /* The Atelier played thread: luminous vermilion core with knurled diagonal weave and outer drop glow */
-      background-color: var(--loom-thread-played);
-      background-image: repeating-linear-gradient(
-        45deg,
-        rgba(255, 255, 255, 0.28) 0 2px,
-        transparent 2px 5px
-      );
-      box-shadow: var(--loom-thread-glow);
+      /* PowerDVD CyberDeck optical cyber-thread: radiant cyan laser beam with high-contrast core and outer glow */
+      background-color: var(--cyber-cyan);
+      background-image: linear-gradient(90deg, #0088cc 0%, #00f0ff 100%);
+      box-shadow: var(--cyber-cyan-glow);
       border-radius: 9999px 0 0 9999px;
       position: absolute;
     }
@@ -1199,18 +1197,18 @@
       display: flex;
     }
 
-    /* The Atelier machined brass/titanium shuttle thumb */
+    /* PowerDVD CyberDeck polished chrome shuttle thumb with neon cyan beacon */
     .media-time-slider-thumb {
       left: var(--media-slider-fill, 0%);
       width: calc(var(--media-spacing) * 4);
       height: calc(var(--media-spacing) * 4);
-      background: radial-gradient(circle at 35% 35%, #f4efe6 0%, #c8bfb0 60%, #756d60 100%);
-      border: 1.5px solid #141311;
+      background: radial-gradient(circle at 35% 35%, #ffffff 0%, #cbd3dc 45%, #637082 100%);
+      border: 1.5px solid #2d3748;
       border-radius: 50%;
       outline-style: none;
       position: absolute;
       transform: translateX(-50%);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 8px rgba(229, 62, 33, 0.6);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 240, 255, 0.8);
       transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s ease;
     }
 
@@ -1223,8 +1221,8 @@
       width: 4px;
       height: 4px;
       border-radius: 50%;
-      background-color: #ff4d2d;
-      box-shadow: 0 0 4px #ff4d2d;
+      background-color: var(--cyber-cyan);
+      box-shadow: 0 0 6px var(--cyber-cyan);
       pointer-events: none;
     }
 
@@ -1237,14 +1235,14 @@
       &[data-pointing] .media-time-slider-thumb {
         left: var(--media-slider-pointer);
         transform: translateX(-50%) scale(1.2);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.9), 0 0 12px rgba(255, 77, 45, 0.8);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.9), 0 0 16px rgba(0, 240, 255, 0.95);
       }
     }
 
     .media-time-slider-thumb:focus-visible {
       outline-offset: 3px;
-      outline: 2px solid var(--media-ring);
-      box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.6), 0 0 12px rgba(229, 62, 33, 0.8);
+      outline: 2px solid var(--cyber-cyan);
+      box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.8), 0 0 14px var(--cyber-cyan);
     }
 
     @media (forced-colors: active) {
@@ -1283,9 +1281,10 @@
       clip-path: inset(-1px);
       content: "";
       pointer-events: none;
-      background-color: #161513;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.8);
+      /* PowerDVD CyberDeck recessed optical track */
+      background-color: #081017;
+      border: 1px solid #142834;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.95);
       border-radius: 9999px;
       position: absolute;
     }
@@ -1425,17 +1424,17 @@
       z-index: 20;
       height: calc(var(--media-spacing) * 24);
       width: calc(var(--media-spacing) * 7.5);
-      background: var(--loom-chassis-solid) !important;
+      background: var(--cyber-lcd-bg) !important;
       backdrop-filter: var(--media-backdrop-filter-surface);
       -webkit-backdrop-filter: var(--media-backdrop-filter-surface);
-      border: 1px solid var(--loom-chassis-rim) !important;
+      border: 1.5px solid #143545 !important;
       padding-inline: calc(var(--media-spacing) * 3);
       padding-block: calc(var(--media-spacing) * 2.5);
-      color: var(--loom-ivory);
+      color: var(--cyber-cyan);
       --media-popover-side-offset: var(--loom-popup-offset);
       --media-popup-side-offset: var(--media-popover-side-offset);
       border-radius: var(--media-popup-radius) !important;
-      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.16) !important;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.9), 0 0 16px rgba(0, 240, 255, 0.25) !important;
     }
 
     @media (forced-colors: active) {
@@ -1471,8 +1470,8 @@
 
     .media-volume-slider-fill {
       height: var(--media-slider-fill, 0%);
-      background-color: var(--loom-vermilion);
-      box-shadow: var(--loom-thread-glow);
+      background-color: var(--cyber-cyan);
+      box-shadow: var(--cyber-cyan-glow);
       border-radius: 9999px;
       width: 100%;
       position: absolute;
@@ -1491,9 +1490,9 @@
       bottom: var(--media-slider-fill, 0%);
       width: calc(var(--media-spacing) * 3.5);
       height: calc(var(--media-spacing) * 3.5);
-      background: radial-gradient(circle at 35% 35%, #f4efe6 0%, #c8bfb0 60%, #756d60 100%);
-      border: 1.5px solid #141311;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+      background: radial-gradient(circle at 35% 35%, #ffffff 0%, #cbd3dc 45%, #637082 100%);
+      border: 1.5px solid #2d3748;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 240, 255, 0.7);
       border-radius: 50%;
       position: absolute;
       left: 50%;
@@ -1502,7 +1501,8 @@
 
     .media-volume-slider-thumb:focus-visible {
       outline-offset: 2px;
-      outline: 2px solid var(--media-ring);
+      outline: 2px solid var(--cyber-cyan);
+      box-shadow: 0 0 10px var(--cyber-cyan);
     }
 
     @media (forced-colors: active) {
@@ -1516,8 +1516,8 @@
     .media-volume-slider-track {
       height: 100%;
       width: calc(var(--media-spacing) * 1.5);
-      background-color: #141311;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background-color: #081017;
+      border: 1px solid #142834;
       border-radius: 9999px;
       position: absolute;
       bottom: 0;
@@ -1537,15 +1537,17 @@
   }
 
   @scope (.media-skin[data-theme="scaffold"][data-preset="video"]) {
-    /* LOOM Atelier floating titanium chassis. Elevated island hovering over the picture. */
+    /* PowerDVD Hi-Fi CyberDeck skeuomorphic platinum deck chassis */
     .video-controls-bottom {
       pointer-events: auto;
       gap: calc(var(--media-spacing) * 1.5);
-      background: var(--loom-chassis-bg);
+      background: var(--cyber-deck-bg);
       backdrop-filter: var(--media-backdrop-filter-surface);
       -webkit-backdrop-filter: var(--media-backdrop-filter-surface);
-      border: 1px solid var(--loom-chassis-rim);
-      box-shadow: var(--loom-chassis-shadow);
+      border-top: 1.5px solid #ffffff;
+      border-inline: 1.5px solid #758292;
+      border-bottom: 2.5px solid #3c4550;
+      box-shadow: 0 24px 60px -8px rgba(0, 0, 0, 0.9), inset 0 2px 2px rgba(255, 255, 255, 0.95), inset 0 -2px 3px rgba(0, 0, 0, 0.6);
       border-radius: var(--media-controls-radius);
       padding: calc(var(--media-spacing) * 2.5) calc(var(--media-spacing) * 3.5);
       padding-bottom: max(calc(var(--media-spacing) * 2.5), env(safe-area-inset-bottom));
@@ -1557,6 +1559,38 @@
       flex-direction: column;
       display: flex;
       transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* PowerDVD tactile beveled metal push buttons */
+    .video-controls-bottom .media-button {
+      background: var(--cyber-btn-bg);
+      border-top: 1px solid #ffffff;
+      border-inline: 1px solid #758292;
+      border-bottom: 1.5px solid #4a5462;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.95);
+      color: var(--cyber-text-dark);
+      border-radius: 6px;
+    }
+
+    @media (hover: hover) {
+      .video-controls-bottom .media-button:hover {
+        background: var(--cyber-btn-hover);
+        color: #000000;
+        border-color: #00f0ff;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4), inset 0 1px 1px #ffffff, 0 0 8px rgba(0, 240, 255, 0.5);
+      }
+    }
+
+    .video-controls-bottom .media-button:active {
+      background: var(--cyber-btn-active);
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+      transform: translateY(1px) scale(0.95);
+    }
+
+    .video-controls-bottom .media-button:focus-visible {
+      outline: 2px solid var(--cyber-cyan) !important;
+      outline-offset: 2px !important;
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.85) !important;
     }
 
     @scope (.video-controls-content) {
@@ -1663,11 +1697,13 @@
     }
 
     .video-controls-center-button {
-      background: var(--loom-puck-bg) !important;
-      border: 1.5px solid var(--loom-chassis-rim) !important;
-      box-shadow: var(--loom-puck-shadow) !important;
+      background: var(--cyber-jog-dial) !important;
+      border-top: 2px solid #ffffff !important;
+      border-inline: 1.5px solid #758292 !important;
+      border-bottom: 2.5px solid #3c4550 !important;
+      box-shadow: var(--cyber-jog-shadow) !important;
       border-radius: 50% !important;
-      color: var(--loom-ivory) !important;
+      color: #0c141d !important;
       margin: 0 !important;
       transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, color 0.15s ease !important;
     }
@@ -1675,20 +1711,21 @@
     @media (hover: hover) {
       .video-controls-center-button:hover {
         transform: scale(1.08) !important;
-        box-shadow: var(--loom-puck-halo) !important;
-        border-color: rgba(240, 180, 84, 0.5) !important;
-        color: #ffffff !important;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.85), inset 0 2px 3px #ffffff, 0 0 24px rgba(0, 240, 255, 0.7) !important;
+        border-color: #00f0ff !important;
+        color: #000000 !important;
       }
     }
 
     .video-controls-center-button:active {
       transform: scale(0.93) !important;
+      box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.6) !important;
     }
 
     .video-controls-center-button:focus-visible {
-      outline: 2px solid var(--media-ring) !important;
+      outline: 2px solid var(--cyber-cyan) !important;
       outline-offset: 4px !important;
-      box-shadow: var(--loom-puck-halo) !important;
+      box-shadow: 0 0 18px var(--cyber-cyan) !important;
     }
 
     .video-controls-center-button[aria-expanded="true"] {
@@ -1784,8 +1821,8 @@
       display: flex;
     }
 
-    /* Below 20rem the bottom row only fits with tighter groups. */
-    @container media-root (width < 20rem) {
+    /* Below 23rem the bottom row only fits with tighter groups. */
+    @container media-root (width < 23rem) {
       .video-controls-group {
         gap: var(--media-spacing);
       }
@@ -1827,13 +1864,30 @@
     }
 
     .video-controls-top > .media-button {
-      background: var(--loom-chassis-bg) !important;
+      background: var(--cyber-btn-bg) !important;
       backdrop-filter: var(--media-backdrop-filter-indicator);
       -webkit-backdrop-filter: var(--media-backdrop-filter-indicator);
-      border: 1px solid var(--loom-chassis-rim) !important;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.16) !important;
+      border-top: 1px solid #ffffff !important;
+      border-inline: 1px solid #758292 !important;
+      border-bottom: 1.5px solid #4a5462 !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.95) !important;
       border-radius: var(--media-control-radius) !important;
-      color: var(--loom-ivory) !important;
+      color: var(--cyber-text-dark) !important;
+    }
+
+    @media (hover: hover) {
+      .video-controls-top > .media-button:hover {
+        background: var(--cyber-btn-hover) !important;
+        color: #000000 !important;
+        border-color: #00f0ff !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 0 8px rgba(0, 240, 255, 0.5) !important;
+      }
+    }
+
+    .video-controls-top > .media-button:focus-visible {
+      outline: 2px solid var(--cyber-cyan) !important;
+      outline-offset: 2px !important;
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.85) !important;
     }
 
     @scope (.video-controls-content) {
@@ -1904,25 +1958,38 @@
       opacity: 0.5;
     }
 
-    @container media-root (width >= 20rem) {
+    @container media-root (width >= 23rem) {
       .media-time-duration-value {
         display: inline;
       }
     }
 
+    /* PowerDVD backlit cyan LCD telemetry screen */
     .media-time-group {
       height: calc(var(--media-spacing) * 8);
       align-items: center;
       gap: calc(var(--media-spacing) * 0.75);
-      padding-inline: calc(var(--media-spacing) * 1.5);
-      font-family: var(--loom-font-mono);
+      padding-inline: calc(var(--media-spacing) * 2);
+      font-family: var(--cyber-font-lcd);
       font-size: calc(var(--media-spacing) * 2.75);
       font-variant-numeric: tabular-nums;
-      font-weight: 500;
-      letter-spacing: -0.02em;
+      font-weight: 600;
+      letter-spacing: 0.04em;
       flex-shrink: 0;
       line-height: 1;
       display: flex;
+      background: var(--cyber-lcd-bg);
+      border: var(--cyber-lcd-border);
+      border-radius: 6px;
+      box-shadow: var(--cyber-lcd-shadow);
+      color: var(--cyber-cyan);
+      text-shadow: var(--cyber-cyan-glow);
+    }
+
+    @container media-root (width < 23rem) {
+      .media-time-group {
+        padding-inline: var(--media-spacing);
+      }
     }
 
     .media-time-group:where(:dir(rtl), [dir="rtl"], [dir="rtl"] *) {
@@ -1930,7 +1997,7 @@
     }
 
     .media-time-separator {
-      color: var(--loom-plate-muted-foreground);
+      color: var(--cyber-cyan-dim);
       display: none;
     }
 
@@ -1938,7 +2005,7 @@
       opacity: 0.5;
     }
 
-    @container media-root (width >= 20rem) {
+    @container media-root (width >= 23rem) {
       .media-time-separator {
         display: inline;
       }
@@ -2067,21 +2134,23 @@
       pointer-events: none;
       text-overflow: ellipsis;
       white-space: nowrap;
-      background: var(--loom-chassis-bg);
+      background: var(--cyber-deck-bg);
       backdrop-filter: var(--media-backdrop-filter-indicator);
       -webkit-backdrop-filter: var(--media-backdrop-filter-indicator);
-      border: 1px solid var(--loom-chassis-rim);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+      border-top: 1px solid #ffffff;
+      border-inline: 1px solid #758292;
+      border-bottom: 1.5px solid #4a5462;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.9);
       border-radius: var(--media-control-radius);
       min-width: 0;
       padding-inline: calc(var(--media-spacing) * 2.5);
-      font-family: var(--loom-font-mono);
+      font-family: var(--cyber-font-tech);
       font-size: calc(var(--media-spacing) * 2.75);
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      font-weight: 600;
+      font-weight: 700;
       line-height: calc(var(--media-spacing) * 7);
-      color: var(--loom-ivory);
+      color: var(--cyber-text-dark);
       flex: 0 1 auto;
       margin-inline-end: auto;
       overflow: hidden;
@@ -2095,8 +2164,8 @@
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background-color: var(--loom-vermilion);
-      box-shadow: 0 0 6px var(--loom-vermilion);
+      background-color: var(--cyber-cyan);
+      box-shadow: 0 0 6px var(--cyber-cyan);
       flex-shrink: 0;
     }
 
