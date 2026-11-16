@@ -1,8 +1,24 @@
+@font-face {
+  font-family: "HomeVideo";
+  src: url("/fonts/HomeVideo-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "HomeVideo";
+  src: url("/fonts/HomeVideo-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base.theme, base.preset, base.preferences;
 
 @layer base.preset {
   .media-skin[data-theme="scaffold"] {
-    /* PowerDVD Hi-Fi CyberDeck Palette — Skeuomorphic Chrome, Brushed Platinum & Backlit LCD */
+    /* Hi-Fi CyberDeck Palette (inspired by PowerDVD) — Skeuomorphic Chrome, Brushed Platinum & Backlit LCD */
     --cyber-platinum: #e4e8ef;
     --cyber-chrome-highlight: #ffffff;
     --cyber-chrome-dark: #637082;
@@ -15,8 +31,9 @@
     --cyber-vermilion: #e53e21;
     --cyber-font-lcd: ui-monospace, "Share Tech Mono", "Cascadia Code", "SF Mono", Menlo, monospace;
     --cyber-font-tech: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --cyber-font-vhs: "HomeVideo", "VCR OSD Mono", "VT323", "Courier New", monospace;
 
-    /* PowerDVD Hardware Deck Materials */
+    /* Hardware Deck Materials (inspired by PowerDVD) */
     --cyber-deck-bg: linear-gradient(180deg, #dce2eb 0%, #b4becc 26%, #8b97a7 50%, #c0c8d4 84%, #f2f5f9 100%);
     --cyber-deck-solid: #b0bac8;
     --cyber-deck-rim: #566373;
@@ -33,7 +50,7 @@
     --cyber-btn-hover: linear-gradient(180deg, #ffffff 0%, #d8e0eb 50%, #b0bccb 100%);
     --cyber-btn-active: linear-gradient(180deg, #7c8898 0%, #a2aec0 50%, #c0cbda 100%);
 
-    /* LOOM roles mapped to PowerDVD Hi-Fi CyberDeck */
+    /* LOOM roles mapped to Hi-Fi CyberDeck (inspired by PowerDVD) */
     --loom-plate: var(--cyber-deck-bg);
     --loom-plate-foreground: var(--cyber-text-dark);
     --loom-plate-muted-foreground: var(--cyber-text-muted);

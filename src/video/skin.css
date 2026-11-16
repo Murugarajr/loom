@@ -672,6 +672,10 @@
       flex-shrink: 0;
       padding-block: 0;
       display: flex;
+      font-family: var(--cyber-font-vhs) !important;
+      font-size: 15px !important;
+      letter-spacing: 0.08em !important;
+      text-transform: uppercase !important;
     }
 
     .media-menu-radio-item:focus-visible {
@@ -730,6 +734,10 @@
       flex-shrink: 0;
       padding-block: 0;
       display: flex;
+      font-family: var(--cyber-font-vhs) !important;
+      font-size: 15px !important;
+      letter-spacing: 0.08em !important;
+      text-transform: uppercase !important;
     }
 
     .media-menu-back-item:focus-visible {
@@ -846,6 +854,10 @@
       flex-shrink: 0;
       padding-block: 0;
       display: flex;
+      font-family: var(--cyber-font-vhs) !important;
+      font-size: 15px !important;
+      letter-spacing: 0.08em !important;
+      text-transform: uppercase !important;
     }
 
     .media-menu-item:focus-visible {
@@ -853,8 +865,27 @@
       outline: 2px solid var(--media-ring);
     }
 
-    .media-menu-item[data-highlighted] {
-      background-color: var(--media-button-highlight);
+    .media-menu-item[data-highlighted],
+    .media-menu-radio-item[data-highlighted],
+    .media-menu-back-item[data-highlighted] {
+      background-color: rgba(0, 240, 255, 0.22) !important;
+      color: #00f0ff !important;
+      text-shadow: 0 0 6px rgba(0, 240, 255, 0.8) !important;
+    }
+
+    .media-menu-radio-icon {
+      width: calc(var(--media-spacing) * 4.5);
+      height: calc(var(--media-spacing) * 4.5);
+      color: var(--cyber-cyan) !important;
+      flex-shrink: 0;
+    }
+
+    .media-menu-hint-label,
+    .media-menu-tier,
+    .media-menu-badge {
+      font-family: var(--cyber-font-vhs) !important;
+      font-size: 11px !important;
+      letter-spacing: 0.08em !important;
     }
 
     .media-menu-item[data-availability="unavailable"],
@@ -876,6 +907,7 @@
       }
     }
 
+    /* 90s VHS / VCR OSD Settings Menu Window */
     .media-menu-popup {
       z-index: 20;
       height: var(--media-menu-height);
@@ -899,6 +931,7 @@
       padding: 0;
       box-shadow: 0 16px 48px rgba(0, 0, 0, 0.9), 0 0 16px rgba(0, 240, 255, 0.25) !important;
       overflow: hidden !important;
+      font-family: var(--cyber-font-vhs) !important;
     }
 
     @media (forced-colors: active) {
@@ -1118,7 +1151,7 @@
       );
       clip-path: inset(-1px 0);
       pointer-events: none;
-      /* PowerDVD CyberDeck optical cyber-thread: radiant cyan laser beam with high-contrast core and outer glow */
+      /* Optical cyber-thread seek rail: radiant cyan laser beam with high-contrast core and outer glow (inspired by PowerDVD) */
       background-color: var(--cyber-cyan);
       background-image: linear-gradient(90deg, #0088cc 0%, #00f0ff 100%);
       box-shadow: var(--cyber-cyan-glow);
@@ -1197,7 +1230,7 @@
       display: flex;
     }
 
-    /* PowerDVD CyberDeck polished chrome shuttle thumb with neon cyan beacon */
+    /* Polished chrome shuttle thumb with neon cyan beacon (inspired by PowerDVD) */
     .media-time-slider-thumb {
       left: var(--media-slider-fill, 0%);
       width: calc(var(--media-spacing) * 4);
@@ -1281,7 +1314,7 @@
       clip-path: inset(-1px);
       content: "";
       pointer-events: none;
-      /* PowerDVD CyberDeck recessed optical track */
+      /* Recessed optical track (inspired by PowerDVD) */
       background-color: #081017;
       border: 1px solid #142834;
       box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.95);
@@ -1537,7 +1570,7 @@
   }
 
   @scope (.media-skin[data-theme="scaffold"][data-preset="video"]) {
-    /* PowerDVD Hi-Fi CyberDeck skeuomorphic platinum deck chassis */
+    /* Skeuomorphic platinum deck chassis (inspired by PowerDVD) */
     .video-controls-bottom {
       pointer-events: auto;
       gap: calc(var(--media-spacing) * 1.5);
@@ -1561,7 +1594,7 @@
       transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* PowerDVD tactile beveled metal push buttons */
+    /* Tactile beveled metal push buttons (inspired by PowerDVD) */
     .video-controls-bottom .media-button {
       background: var(--cyber-btn-bg);
       border-top: 1px solid #ffffff;
@@ -1964,7 +1997,7 @@
       }
     }
 
-    /* PowerDVD Backlit Cyan VFD Telemetry Console Display */
+    /* Backlit Cyan VFD Telemetry Console Display (inspired by PowerDVD) */
     .cyber-vfd-display {
       background: var(--cyber-lcd-bg);
       border: var(--cyber-lcd-border);
