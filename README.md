@@ -1,12 +1,50 @@
-<p align="center">
+<div align="center">
+
   <img src="apps/preview/public/loom-chrome-logo-perspective.jpg" alt="LOOM — Hi-Fi CyberDeck Video.js Skin" width="760" style="border-radius: 12px; box-shadow: 0 16px 36px rgba(0,0,0,0.85);" />
-</p>
 
-# LOOM — Hi-Fi CyberDeck Video.js Skin
+  # LOOM
 
-> A skeuomorphic Video.js 10 skin inspired by PowerDVD and Y2K hi-fi hardware. Features an authentic brushed platinum & chrome chassis, illuminated cyan VFD telemetry screen, optical laser seek rail, concentric machined jog wheel, visible focus outlines, and complete keyboard shortcuts.
+  **Hi-Fi CyberDeck Video.js 10 Skin &bull; Inspired by PowerDVD**
 
-**Live Production Demo:** [loom-skin.vercel.app](https://loom-skin.vercel.app)
+  <p>
+    A skeuomorphic Video.js 10 skin inspired by PowerDVD and Y2K hi-fi hardware. Features an authentic brushed platinum & chrome chassis, illuminated cyan VFD telemetry screen, optical laser seek rail, concentric machined jog wheel, visible focus outlines, and complete keyboard shortcuts.
+  </p>
+
+  <p>
+    <a href="https://videojs.org/"><img src="https://img.shields.io/badge/Video.js-10.4.0-black?style=flat&logo=video.js&logoColor=white" alt="Video.js 10.4.0" /></a>
+    <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-7.0-blue?style=flat&logo=typescript&logoColor=white" alt="TypeScript 7.0" /></a>
+    <a href="https://react.dev/"><img src="https://img.shields.io/badge/React-19.3-20232a?style=flat&logo=react&logoColor=61dafb" alt="React 19.3" /></a>
+    <a href="https://vite.dev/"><img src="https://img.shields.io/badge/Vite-8.3-646CFF?style=flat&logo=vite&logoColor=white" alt="Vite 8.3" /></a>
+    <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind_CSS-4.3-38B2AC?style=flat&logo=tailwind-css&logoColor=white" alt="Tailwind CSS 4.3" /></a>
+    <a href="https://www.mux.com/"><img src="https://img.shields.io/badge/Mux-HLS_10.4-ff0055?style=flat&logo=mux&logoColor=white" alt="Mux HLS" /></a>
+  </p>
+
+  <p>
+    <img src="https://img.shields.io/badge/Architecture-Web_Components-ff6f00?style=flat" alt="Web Components" />
+    <img src="https://img.shields.io/badge/Theme-Hi--Fi_CyberDeck-00f0ff?style=flat" alt="Hi-Fi CyberDeck" />
+    <img src="https://img.shields.io/badge/A11y-WCAG_2.1_AA-success?style=flat" alt="WCAG AA" />
+    <img src="https://img.shields.io/badge/Controls-100%25_Keyboard_Accessible-9d4edd?style=flat" alt="Keyboard Accessible" />
+    <a href="https://loom-skin.vercel.app"><img src="https://img.shields.io/badge/hosted_on-Vercel-000000?style=flat&logo=vercel&logoColor=white" alt="Hosted on Vercel" /></a>
+  </p>
+
+  <p>
+    <a href="https://www.apache.org/licenses/LICENSE-2.0"><img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg?style=flat" alt="Apache License 2.0" /></a>
+    <a href="https://loom-skin.vercel.app"><img src="https://img.shields.io/badge/demo-online-brightgreen?style=flat" alt="Demo Online" /></a>
+    <a href="https://loom-skin.vercel.app"><img src="https://img.shields.io/badge/status-production_ready-00f0ff?style=flat" alt="Production Ready" /></a>
+    <img src="https://img.shields.io/badge/typecheck-passing-brightgreen?style=flat" alt="Typecheck" />
+    <img src="https://img.shields.io/badge/build-passing-brightgreen?style=flat" alt="Build Passing" />
+    <a href="https://contra.com/community/topic/videojsskinschallenge/guidelines"><img src="https://img.shields.io/badge/Challenge-Contra_Video.js_v10-black?style=flat" alt="Contra Challenge" /></a>
+  </p>
+
+  <p>
+    <a href="https://loom-skin.vercel.app"><strong>Launch Live Demo &rarr;</strong></a>
+  </p>
+
+  <p align="center">
+    <img src="apps/preview/public/showcase-preview.png" alt="LOOM Interface Showcase" width="840" style="border-radius: 12px; border: 1px solid #1a2736; box-shadow: 0 20px 48px rgba(0,0,0,0.85);" />
+  </p>
+
+</div>
 
 ---
 
@@ -66,3 +104,10 @@ To deploy on every push instead, put the project on GitHub and import it on Verc
 
 - [Video.js Documentation](https://videojs.org/docs/framework/html/guides/build-your-own-skin)
 - [Video.js HTML Components](https://videojs.org/docs/framework/html/guides/ui-components)
+
+---
+
+## License
+
+This project is licensed under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+
