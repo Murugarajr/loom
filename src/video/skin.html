@@ -27,8 +27,14 @@
 <media-controls-content class="video-controls-content">
 <media-tooltip-group>
 <media-controls-group class="video-controls-top">
+<div class="video-top-badge">
+<span class="video-top-badge-dot"></span>
 <media-title class="media-title">
 </media-title>
+<span class="video-top-badge-divider">|</span>
+<span class="video-top-badge-codec">DOLBY DIGITAL &bull; 4K</span>
+</div>
+<div class="video-disc-badge">DISC: COSMIC_DAWN.VOB</div>
 <media-airplay-button class="media-button media-airplay-button" id="vjs-COsQCb_P-0-trigger">
 <media-icon family="scaffold" name="airplay-enter" class="media-button-icon media-airplay-button-enter-icon">
 </media-icon>
@@ -100,6 +106,10 @@
 </media-buffering-indicator>
 <div class="video-controls-bottom video-controls-video-bottom">
 <div class="video-controls-slider-row">
+<div class="video-controls-meta-track">
+<span class="meta-track-title-chapter" id="meta-track-chapter">TITLE 01 / CHAPTER 01: A NEVER-BEFORE-SEEN LOOK</span>
+<span class="meta-track-duration">TRACK: 01:51</span>
+</div>
 <media-time-slider class="media-time-slider" thumb-alignment="edge">
 <media-time-slider-chapters class="media-time-slider-chapters">
 <template>
@@ -168,6 +178,13 @@
 </media-slider-thumb>
 </media-volume-slider>
 </media-volume-popover>
+<div class="cyber-vfd-display">
+<div class="cyber-vfd-top-row">
+<span class="cyber-vfd-format">DVD VIDEO</span>
+<span class="cyber-vfd-chapter" id="cyber-vfd-chapter-label">TITLE 01 &bull; CH 01</span>
+<span class="cyber-vfd-audio">STEREO 48k</span>
+</div>
+<div class="cyber-vfd-bottom-row">
 <media-time-group class="media-time-group">
 <media-time class="media-time-toggle" type="current" toggle>
 </media-time>
@@ -178,6 +195,13 @@
 <media-time class="media-time-duration-value" type="duration">
 </media-time>
 </media-time-group>
+<div class="cyber-vfd-badges">
+<span class="cyber-vfd-badge">16:9 LB</span>
+<span class="cyber-vfd-badge cyber-vfd-badge-dts">DTS</span>
+<span class="cyber-vfd-badge cyber-vfd-badge-4k">4K</span>
+</div>
+</div>
+</div>
 </media-controls-group>
 <media-controls-group class="video-controls-group">
 <media-captions-button class="media-button media-captions-button" id="vjs-COsQCb_P-0-10-trigger">
@@ -418,6 +442,8 @@
 </media-status-announcer>
 <loom-controls-keeper class="loom-controls-keeper">
 </loom-controls-keeper>
+<loom-vfd-telemetry class="loom-vfd-telemetry">
+</loom-vfd-telemetry>
 <div aria-hidden="true" class="media-indicator-group">
 <media-volume-indicator class="media-indicator media-volume-indicator">
 <media-volume-indicator-fill class="media-volume-indicator-fill">

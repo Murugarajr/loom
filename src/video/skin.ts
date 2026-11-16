@@ -64,6 +64,7 @@ import '@videojs/html/ui/seek-indicator';
 import '@videojs/html/ui/seek-indicator-value';
 // LOOM: keeps the controls visible during keyboard use and while a menu or the volume popup is open.
 import './controls-keeper';
+import './vfd-telemetry';
 import { registerIcons } from '@videojs/html/icons';
 import {
   airPlayEnterIcon as airPlayEnterIconScaffold,
