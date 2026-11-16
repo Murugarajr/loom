@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1600, height=1200" />
+    <title>LOOM — Summary Slide</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        width: 1600px;
+        height: 1200px;
+        background-color: #070a0e;
+        background-image: 
+          radial-gradient(circle at 85% 15%, rgba(0, 240, 255, 0.12) 0%, transparent 55%),
+          radial-gradient(circle at 15% 85%, rgba(0, 150, 255, 0.08) 0%, transparent 50%),
+          linear-gradient(180deg, #090e15 0%, #05080c 100%);
+        color: #e2e8f0;
+        font-family: 'Space Grotesk', -apple-system, sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 56px 64px 44px 64px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      /* Subtle background cyber grid */
+      body::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: 
+          linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+        background-size: 40px 40px;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .slide-content {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: space-between;
+      }
+
+      /* Top Header */
+      .slide-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 32px;
+      }
+
+      .header-left {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+      }
+
+      .corner-logo-frame {
+        width: 140px;
+        height: 80px;
+        border-radius: 12px;
+        border: 1px solid #1a2d42;
+        background: #0b1118;
+        padding: 4px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 240, 255, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      .corner-logo-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+
+      .title-block {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .brand-title-row {
+        display: flex;
+        align-items: baseline;
+        gap: 16px;
+      }
+
+      .brand-title {
+        font-family: 'Chakra Petch', sans-serif;
+        font-size: 52px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        background: linear-gradient(180deg, #ffffff 20%, #cbd5e1 55%, #718096 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 30px rgba(0, 240, 255, 0.3);
+      }
+
+      .brand-tag {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 15px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #00f0ff;
+        background: rgba(0, 240, 255, 0.08);
+        border: 1px solid rgba(0, 240, 255, 0.3);
+        padding: 4px 12px;
+        border-radius: 6px;
+      }
+
+      .brand-subtitle {
+        font-size: 19px;
+        color: #94a3b8;
+        font-weight: 500;
+      }
+
+      .brand-subtitle strong {
+        color: #cbd5e1;
+      }
+
+      .header-right {
+        display: flex;
+        gap: 12px;
+      }
+
+      .header-badge {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        padding: 8px 16px;
+        border-radius: 8px;
+        border: 1px solid #1e293b;
+        background: rgba(15, 23, 42, 0.7);
+        color: #94a3b8;
+      }
+
+      .header-badge.highlight {
+        border-color: rgba(0, 240, 255, 0.4);
+        background: rgba(0, 240, 255, 0.08);
+        color: #00f0ff;
+      }
+
+      /* Main Body (Split 2-Column) */
+      .slide-main {
+        display: grid;
+        grid-template-columns: 590px 1fr;
+        gap: 40px;
+        align-items: stretch;
+        flex: 1;
+        margin-bottom: 28px;
+      }
+
+      /* Left Column: Concept & Features */
+      .left-col {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .mission-card {
+        background: rgba(13, 20, 30, 0.8);
+        border: 1px solid rgba(0, 240, 255, 0.2);
+        border-radius: 12px;
+        padding: 20px 24px;
+        margin-bottom: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      }
+
+      .mission-label {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        color: #00f0ff;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .mission-label::before {
+        content: '';
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        background: #00f0ff;
+        border-radius: 50%;
+        box-shadow: 0 0 8px #00f0ff;
+      }
+
+      .mission-text {
+        font-size: 17px;
+        line-height: 1.5;
+        color: #cbd5e1;
+      }
+
+      .pillars-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .pillar-card {
+        background: rgba(11, 17, 26, 0.7);
+        border: 1px solid #1a2736;
+        border-left: 3px solid #00f0ff;
+        border-radius: 10px;
+        padding: 16px 20px;
+        transition: all 0.2s ease;
+      }
+
+      .pillar-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 6px;
+      }
+
+      .pillar-icon {
+        font-size: 18px;
+      }
+
+      .pillar-title {
+        font-family: 'Chakra Petch', sans-serif;
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        color: #f1f5f9;
+      }
+
+      .pillar-desc {
+        font-size: 14px;
+        line-height: 1.45;
+        color: #94a3b8;
+      }
+
+      .pillar-desc strong {
+        color: #38bdf8;
+      }
+
+      /* Right Column: Player Interface Showcase */
+      .right-col {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .preview-frame-wrap {
+        position: relative;
+        border-radius: 16px;
+        border: 1px solid #1e334a;
+        background: #05080c;
+        padding: 12px;
+        box-shadow: 
+          0 24px 60px rgba(0, 0, 0, 0.8),
+          0 0 36px rgba(0, 240, 255, 0.12);
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      .preview-top-telemetry {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 6px 12px 10px 12px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 12px;
+        color: #64748b;
+        border-bottom: 1px solid #132030;
+        margin-bottom: 12px;
+      }
+
+      .live-dot {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        background: #00f0ff;
+        border-radius: 50%;
+        margin-right: 6px;
+        box-shadow: 0 0 8px #00f0ff;
+      }
+
+      .preview-img-container {
+        flex: 1;
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid #162436;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #020406;
+      }
+
+      .preview-img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .specs-strip {
+        margin-top: 18px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+      }
+
+      .spec-item {
+        background: rgba(13, 20, 30, 0.7);
+        border: 1px solid #1a2736;
+        border-radius: 8px;
+        padding: 12px 14px;
+        text-align: center;
+      }
+
+      .spec-label {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #64748b;
+        margin-bottom: 4px;
+      }
+
+      .spec-val {
+        font-family: 'Chakra Petch', sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        color: #f1f5f9;
+      }
+
+      .spec-val.cyan {
+        color: #00f0ff;
+      }
+
+      /* Bottom Divider & Footer */
+      .slide-footer-section {
+        margin-top: auto;
+      }
+
+      .footer-divider-line {
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(90deg, 
+          rgba(0, 240, 255, 0.6) 0%, 
+          rgba(0, 240, 255, 0.3) 50%, 
+          rgba(0, 240, 255, 0.6) 100%);
+        box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+        margin-bottom: 18px;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .footer-credits {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 20px;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        color: #e2e8f0;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .footer-credits span.sep {
+        color: #00f0ff;
+        font-weight: 400;
+        opacity: 0.8;
+      }
+
+      .footer-credits span.highlight {
+        color: #38bdf8;
+      }
+
+      .footer-live-badge {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 15px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        color: #00f0ff;
+        background: rgba(0, 240, 255, 0.08);
+        border: 1px solid rgba(0, 240, 255, 0.3);
+        padding: 6px 18px;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-content">
+      <!-- Header -->
+      <header class="slide-header">
+        <div class="header-left">
+          <div class="corner-logo-frame">
+            <img src="./loom-chrome-logo-perspective.jpg" alt="LOOM Chrome Emblem" class="corner-logo-img" />
+          </div>
+          <div class="title-block">
+            <div class="brand-title-row">
+              <h1 class="brand-title">LOOM</h1>
+              <span class="brand-tag">Hi-Fi CyberDeck</span>
+            </div>
+            <p class="brand-subtitle">
+              Skeuomorphic Video.js 10 Skin &bull; <strong>Inspired by PowerDVD</strong>
+            </p>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <div class="header-badge highlight">#videojsskinschallenge</div>
+          <div class="header-badge">WCAG 2.1 AA Compliant</div>
+          <div class="header-badge">Video.js v10.4.0</div>
+        </div>
+      </header>
+
+      <!-- Main Body Grid -->
+      <main class="slide-main">
+        <!-- Left: Mission & 4 Feature Pillars -->
+        <div class="left-col">
+          <div class="mission-card">
+            <div class="mission-label">Concept & Architecture</div>
+            <p class="mission-text">
+              Stepping away from sterile flat minimalism to celebrate tactile Y2K hardware nostalgia. Built with native <strong>Video.js 10 Web Components</strong>, fusing brushed-platinum hi-fi aesthetics with phosphor cyan telemetry and modern web accessibility.
+            </p>
+          </div>
+
+          <div class="pillars-grid">
+            <div class="pillar-card">
+              <div class="pillar-header">
+                <span class="pillar-icon">🎛️</span>
+                <h3 class="pillar-title">3D Machined Chrome Hardware</h3>
+              </div>
+              <p class="pillar-desc">
+                Heavy brushed-platinum chassis with chamfered specular highlights, precision bevels, and tactile 3D billet push buttons with mechanical depression.
+              </p>
+            </div>
+
+            <div class="pillar-card">
+              <div class="pillar-header">
+                <span class="pillar-icon">📟</span>
+                <h3 class="pillar-title">Backlit Cyan VFD Telemetry Console</h3>
+              </div>
+              <p class="pillar-desc">
+                Full-width digital rackmount screen streaming real-time titles, chapters, <strong>STEREO 48k</strong> bitstream, and illuminated <strong>16:9 LB</strong>, <strong>DTS</strong>, and <strong>4K</strong> badges.
+              </p>
+            </div>
+
+            <div class="pillar-card">
+              <div class="pillar-header">
+                <span class="pillar-icon">⚡</span>
+                <h3 class="pillar-title">Optical Seek Rail & Jog Wheel</h3>
+              </div>
+              <p class="pillar-desc">
+                Electric cyan laser seek rail with polished chrome shuttle bead, paired with a central concentric jog dial for rapid tactile scrub control.
+              </p>
+            </div>
+
+            <div class="pillar-card">
+              <div class="pillar-header">
+                <span class="pillar-icon">📼</span>
+                <h3 class="pillar-title">Retro 90s VHS Settings & Keyboard Deck</h3>
+              </div>
+              <p class="pillar-desc">
+                Authentic 90s VCR on-screen display font scoped to settings; unmissable <strong>#00f0ff</strong> focus rings, 44px touch targets, and 100% keyboard navigation.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Player Interface & Spec Strip -->
+        <div class="right-col">
+          <div class="preview-frame-wrap">
+            <div class="preview-top-telemetry">
+              <span><span class="live-dot"></span>LIVE MEDIA RACKMOUNT &bull; HLS ADAPTIVE STREAM</span>
+              <span>1080p / 60fps &bull; DOLBY AUDIO</span>
+            </div>
+            <div class="preview-img-container">
+              <img src="./player-preview-card.png" alt="LOOM Player Deck Demonstration" class="preview-img" />
+            </div>
+          </div>
+
+          <div class="specs-strip">
+            <div class="spec-item">
+              <div class="spec-label">Core Engine</div>
+              <div class="spec-val cyan">Video.js 10</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label">Streaming</div>
+              <div class="spec-val">Mux HLS</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label">Architecture</div>
+              <div class="spec-val">Web Components</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label">Accessibility</div>
+              <div class="spec-val cyan">100% Keyboard</div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Bottom Thin Solid Line & Required Footer -->
+      <footer class="slide-footer-section">
+        <div class="footer-divider-line"></div>
+        <div class="footer-row">
+          <div class="footer-credits">
+            <span>Video.js</span>
+            <span class="sep">|</span>
+            <span>Mux</span>
+            <span class="sep">|</span>
+            <span class="highlight">Murugarajr</span>
+          </div>
+          <div class="footer-live-badge">
+            <span class="live-dot"></span> loom-skin.vercel.app
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
